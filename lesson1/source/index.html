@@ -1,0 +1,22 @@
+<html>
+<head>
+<script>
+function mouseOver()
+{
+	// document.b1.src ="images/eg_mouse.jpg"  //这种方式不通用
+	document.getElementById("img").src="images/eg_mouse.jpg";
+}
+function mouseOut()
+{
+	document.b1.src ="images/eg_mouse2.jpg"
+}
+</script>
+</head>
+
+<body>
+<!-- 教学目的： 学习javascript的事件和函数触发机制 -->
+<a href="index.html" target="_parent">
+<img src="images/eg_mouse2.jpg" alt="这是一个鼠标悬停的特效!" name="b1" id="img" width="128" height="128" border="0"  onmouseover="mouseOver()" onMouseOut="mouseOut()" />
+</a>
+</body>
+</html>
