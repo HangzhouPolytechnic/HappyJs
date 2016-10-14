@@ -2,7 +2,7 @@
 当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。
 
 ##HTML DOM 树
-![alt text](https://raw.githubusercontent.com/HangzhouPolytechnic/HappyJs/master/Domtree.gif "Title")
+![alt text](https://raw.githubusercontent.com/HangzhouPolytechnic/HappyJs/master/lesson4-DOM%E6%93%8D%E4%BD%9C%E5%92%8C%E8%A1%A8%E5%8D%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%AA%8C%E8%AF%81/Domtree.gif "Title")
 
 通过可编程的对象模型，JavaScript 获得了足够的能力来创建动态的 HTML。
 
