@@ -15,6 +15,17 @@ function reverseString(string){
 ```
 * 截取字符串abcdefg的efg(腾讯2015年校招题)
 * 打印出1-10000之间的所有对称数(如121,1331,2442)
+```javascript
+function reverseString(string){
+		return string.split("").reverse().join("");
+	}
+	
+	for(i=1;i<10000;i++){
+		if(i==reverseString(i.toString())){
+			console.log(i);
+		}
+	}
+```
 * 计算等差出列1+2+3+.....1000的值
 * 一个新入职（25岁），月工资为2000元的员工，每年涨工资20%，到退休时（60岁）的月工资是多少？ 直到退休拿了多少钱
 * 打印出九九乘法表
