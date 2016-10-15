@@ -1,6 +1,18 @@
 ##练习题
 
 * 书写一个函数，要求将字符串倒着打印出来：例：输入hello world 输出dlrow olleh
+```javascript
+function reverseString(string){
+		//普通方法
+		/*var content="";  
+		for(var index=string.length-1;index>=0;index--){
+			content=content+string[index];
+		}
+		return content;	*/
+		
+		return string.split("").reverse().join("");//现将字符串转换成数组 再进行反转 再将数组通过空字符串拼接
+}
+```
 * 截取字符串abcdefg的efg(腾讯2015年校招题)
 * 打印出1-10000之间的所有对称数(如121,1331,2442)
 * 计算等差出列1+2+3+.....1000的值
