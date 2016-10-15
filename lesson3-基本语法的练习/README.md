@@ -31,6 +31,21 @@ function reverseString(string){
 * 打印出九九乘法表
 * 100-200间的3和7的倍数
 * 正整数十进制转化成二进制 js函数
+```javascript
+function conver10to2(t){
+		var array=[];
+		while(t!=1){
+		   if(t%2==0){
+			array.push(0);
+		   }else{
+			array.push(1);
+		   }
+		   t=parseInt(t/2);//
+		}
+		array.push(1);
+		return array.reverse().join("");
+	}
+```
 * 下面程序运行后alert(n)的内容是什么?(腾讯前端面试题)
 ```javascript
 //
