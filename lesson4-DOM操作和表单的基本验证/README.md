@@ -38,7 +38,14 @@ $('p')
 document.getElementsByClassName("class1");// 找到所有类为"class1"的元素 
 //jquery 写法
 $('.class1')
-
+```
+* 批量修改集合元素的属性
+```javascript
+  //找出 class为 my_span 的标签集合 
+	var n=document.getElementsByClassName("my_span").length; //这边 可以换成 getElementsByTagName 获取标签元素集合 
+	for(i=0;i<n;i++){
+		document.getElementsByClassName("my_span")[i].innerHTML="想要修改的值";
+	}
 ```
 ##获取或修改 HTML 元素的属性
 获取 HTML 元素的属性
