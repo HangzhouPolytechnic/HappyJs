@@ -14,13 +14,39 @@
 通常，通过 JavaScript，您需要操作 HTML 元素，首先必须找到该元素
 
 ##查找 HTML 元素
-有三种基本方法来做这件事
+有三种基本方法来做这件事，无论是js 还是 jquery
 
 * 通过 id 找到 HTML 元素（唯一）
-* 通过标签名找到 HTML 元素  （唯一 或 集合）
-* 通过类名找到 HTML 元素 （唯一 或 集合）
-
-
+```javascript
+document.getElementById("span1") //元素id编号 <span id="span1"></span>
+//jquery 写法
+$('#span1')
+```
+* 通过标签名找到 HTML 元素  （集合）
+```javascript
+document.getElementsByTagName("p");// 所有的标签集合  <p> <span>
+//jquery 写法
+$('p')
+```
+* 通过类名找到 HTML 元素 （集合）
+```javascript
+/*
+<span class="class1"></span>
+<span class="class1"></span>
+<p class="class1"></p>
+*/
+document.getElementsByClassName("class1");// 找到所有类为"class1"的元素 
+//jquery 写法
+$('.class1')
+```
+* 批量修改集合元素的属性
+```javascript
+  //找出 class为 my_span 的标签集合 
+	var n=document.getElementsByClassName("my_span").length; //这边 可以换成 getElementsByTagName 获取标签元素集合 
+	for(i=0;i<n;i++){
+		document.getElementsByClassName("my_span")[i].innerHTML="想要修改的值";
+	}
+```
 ##获取或修改 HTML 元素的属性
 获取 HTML 元素的属性
 ```javascript
