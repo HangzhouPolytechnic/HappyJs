@@ -1,6 +1,7 @@
 #练习题
 
 * 书写一个函数，要求将字符串倒着打印出来：例：输入hello world 输出dlrow olleh
+
 ```javascript
 function reverseString(string){
     	//普通方法
@@ -13,8 +14,10 @@ function reverseString(string){
 		return string.split("").reverse().join("");//现将字符串转换成数组 再进行反转 再将数组通过空字符串拼接
 }
 ```
+
 * 截取字符串abcdefg的efg(腾讯2015年校招题)
 * 打印出1-10000之间的所有对称数(如121,1331,2442)
+
 ```javascript
 function reverseString(string){
 		return string.split("").reverse().join("");
@@ -35,7 +38,6 @@ for(var i=0;i<=1000;i++){
 }
 ```
 * 一个新入职（25岁），月工资为2000元的员工，每年涨工资20%，到退休时（60岁）的月工资是多少？ 直到退休拿了多少钱
-<<<<<<< HEAD
 
 ```javascript
 var money=2000;
@@ -49,11 +51,8 @@ for(age=25;age<=60;age++){
 console.log("60岁薪资:"+money+"直到退休拿了:"+get_money);
 ```
 
-* 打印出九九乘法表
-=======
->>>>>>> 9eea2c98cf66100e90fdcedec3e7f7055346589b
-* 100-200间的3和7的倍数
 * 正整数十进制转化成二进制 js函数
+
 ```javascript
 function conver10to2(t){
 		var array=[];
@@ -69,7 +68,9 @@ function conver10to2(t){
 		return array.reverse().join("");
 	}
 ```
+
 * 下面程序运行后alert(n)的内容是什么?(腾讯前端面试题)
+
 ```javascript
 var n = 0;
 function a() {
