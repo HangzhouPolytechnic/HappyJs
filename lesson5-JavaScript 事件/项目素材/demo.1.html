@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HapplyJs学习demo模板文件</title>
+	<link href="libs/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">输入相应字符点击‘翻转’将字符串翻转输出到p标签内</h3>
+					</div>
+					<div class="panel-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="exampleInputEmail1">请输入翻转的字符</label>
+								<input type="text" class="form-control" id="inputString0" placeholder="请输入要翻转的字符">
+							</div>
+							<p>请输出到这里:</p>
+							<button type="button"class="btn btn-primary" id="reserveButton" onclick="reserveString()">翻转</button>
+						</form>
+					</div>
+				</div>
+                <div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">输入相应字符实时翻转输出到p标签内</h3>
+					</div>
+					<div class="panel-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="exampleInputEmail1">请输入翻转的字符</label>
+								<input type="text" class="form-control" id="inputString1" oninput="changeReserveString(this)" placeholder="请输入要翻转的字符">
+							</div>
+							<p>请输出到这里:</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="libs/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
+	<script>
+		function reserveString(){
+			debugger;
+			var ev=ev||event;//兼容性写法
+			console.log(ev.currentTarget.innerText);
+		}
+		function changeReserveString(a){
+			var ev=ev||event;//兼容性写法
+			console.log(a.value);
+		}
+	</script>
+</body>
+
+</html>

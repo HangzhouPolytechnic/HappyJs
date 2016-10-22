@@ -27,7 +27,27 @@ function reverseString(string){
 	}
 ```
 * 计算等差出列1+2+3+.....1000的值
+
+```javascript
+var result=0;
+for(var i=0;i<=1000;i++){
+	result+=i;// result=result+i 简写
+}
+```
 * 一个新入职（25岁），月工资为2000元的员工，每年涨工资20%，到退休时（60岁）的月工资是多少？ 直到退休拿了多少钱
+
+```javascript
+var money=2000;
+var get_money=0;
+for(age=25;age<=60;age++){
+	for(month=1;month<=12;month++){
+		get_money=get_money+money;
+	}
+	money=money*1.2;
+}
+console.log("60岁薪资:"+money+"直到退休拿了:"+get_money);
+```
+
 * 打印出九九乘法表
 * 100-200间的3和7的倍数
 * 正整数十进制转化成二进制 js函数
