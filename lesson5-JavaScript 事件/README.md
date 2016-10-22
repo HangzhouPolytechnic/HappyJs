@@ -18,9 +18,10 @@ JavaScript 使我们有能力创建动态页面。事件是可以被 JavaScript 
 当一个事件发生的时候，和当前这个对象发生的这个事件有关的一些详细信息都会被临时保存到一直指定地方——event对象，供我们在需要的时候调用
 =======
 Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态
->>>>>>> 5b5c1561dad934ee59d26ad0e87eda7376113d05
 
 ```javascript
- var e=evt||window.event;
+debugger;
+//查看事件对象
+ var e=window.event;
  
 ```

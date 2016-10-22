@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>互加</title>
+<meta http-equiv="X-UA-Compatible" content="edge,chrome=1"  />
+<meta http-equiv="Cache-Control" content="no-siteapp" /> <!-- 避免转码 -->
+<meta name="keywords" content="互加"/>
+<meta name="description" content="互加"/>
+<meta name="viewport"   content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"  />
+<meta name="renderer" content="webkit|ie-comp|ie-stand"> 
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="address=no">
+<meta name="format-detection" content="email=no" >
+<meta name="apple-mobile-web-app-title" content="">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="screen-orientation" content="portrait"> 
+<meta name="x5-orientation" content="portrait"> 
+<meta name="msapplication-tap-highlight" content="no"> 
+<meta name="HandheldFriendly" content="true">
+<link href="css/common.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+
+</head>
+<body class="fill" style="background: #F1F1F1;">
+<div id="wrap"  >
+   
+     <div class="index_menu translateZ" id="j_index_menu" >
+        <ul id="j_menu">
+            <div class="headImg"><img src="images/view/headimg.png"></div>
+            <li>凌霄被</li>
+            <li data-href='index.html' ontouchmove="this.s=1;" ontouchend="this.s||window.open(this.dataset.href);this.s=0" >首页 <i></i></li>
+            <li data-href='person.html'ontouchmove="this.s=1;" ontouchend="this.s||window.open(this.dataset.href);this.s=0">个人主页<i></i></li>
+            <li data-href="top.html"        ontouchmove="this.s=1;" ontouchend="this.s||window.open(this.dataset.href);this.s=0" >榜单<i></i></li>
+        </ul>
+     </div>
+     
+     <div class="contents" id="j_contents">
+        <div class="index_nav">
+           <span id="j_menuicon" class="menuicon"></span>
+           <span class="menuplus"></span>
+        </div>
+
+		 <div class="container">
+			 <div class="data-title"><p>动动手指，完善资料，进入榜单~</p></div>
+			 <form>
+				 <div class="data-cont">
+					 <nav class="data-nav">
+						 <ul>
+							 <li><span class="data-name">姓&nbsp;&nbsp;&nbsp;名：</span><input type="text" class="data-int"></li>
+							 <li><span class="data-name">职&nbsp;&nbsp;&nbsp;业：</span><input type="text" class="data-int"></li>
+							 <li><span class="data-name">年&nbsp;&nbsp;&nbsp;龄：</span><input type="text" class="data-int"></li>
+							 <li><span class="data-name">微信号：</span><input type="text" class="data-int"></li>
+						 </ul>
+					 </nav>
+				 </div>
+				 <input type="button" class="data-submit" value="提交资料">
+			 </form>
+		 </div>
+      
+     </div>
+     
+     
+     <!--红包--> 
+   <div id="index_redpage">
+      <div class="redpage_imgbox">
+      <img src="images/view/rebg.png">
+      <div class="redpage_price"><h1>30</h1><p>元</p></div>
+      </div>
+      <h1 class="senthWho">给林小贝Betty发红包可以</h1>
+      <ul class="workkinds">
+        <li>接通告</li>
+        <li>陪电玩</li>
+        <li>陪健身</li>
+        <li>陪吃饭</li>
+        <li>陪唱歌</li>
+        <li>陪喝酒</li>
+        <li>陪旅行</li>
+        <li>谈恋爱</li>
+     </ul>
+     
+     <div class="redline"><p></p><div class="spanboxs"><span><img src="images/view/listImg.jpg"></span></div></div>
+     <div class="sentButton" id="j_sentButton">发红包</div>
+   </div> 
+    <!--红包-->
+    
+    
+     <!--红包成功发出后-->
+     <div class="successinfo" id="j_successinfo">
+        <span class="closeInfo" id="j_closeInfo">X</span>
+        <div class="successinfoimg">
+            <div><img src="images/view/listImg.jpg"></div>
+            <h1>tomorrow</h1>
+            <h2>微信号：时代的召唤</h2>
+        </div>
+        <p>复制并打开微信</p>
+     </div>
+    <!--红包成功发出后-->
+   
+   <!--遮罩层-->
+   <div id="index_masks" class="translateZ"></div>
+    <!--遮罩层-->
+</div>
+
+<script src="js/common.js"></script>
+<script>    
+
+   //隐藏工具栏
+	 if(document.documentElement.scrollHeight <= document.documentElement.clientHeight) { 
+      bodyTag = document.getElementsByTagName('body')[0]; 
+      bodyTag.style.height = document.documentElement.clientWidth / screen.width * screen.height + 'px'; 
+      } 
+	 setTimeout(function() { 
+	 window.scrollTo(0, 1); 
+	 },0); 
+	 
+  
+  domReady(function(){
+	   var doc=document;
+	   var  j_menu=doc.getElementById("j_menu");
+	   var  j_menuli=j_menu.getElementsByTagName("li");
+	   var  j_menuliLen=j_menuli.length;
+	   var  j_menuicon=doc.getElementById("j_menuicon");
+	   var  j_contents=doc.getElementById("j_contents");
+	   var  j_index_menu=doc.getElementById("j_index_menu");
+	   var  isShowMenu=true;
+	   
+	   //高度修复
+	   var wrap=doc.getElementById("wrap");
+	   
+	   //获取文档完整的高度 
+     var getScrollHeight=function () { 
+       return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); 
+      } 
+	 
+	   
+	   function wrapH(){
+	   var  winH=window.innerHeight;
+	   var wrapH=parseInt(wrap.offsetHeight)<winH?winH:parseInt(getScrollHeight);
+         wrap.style.height=wrapH+'px';
+	  // j_index_menu.style.height=wrapH+'px';
+	  // j_contents.style.height=wrapH+'px';
+	   }
+	  // wrapH();
+	   //var  resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+	   //window.addEventListener(resizeEvt, throttle(function(){wrapH();},200), false); 
+	   
+	   //菜单icon 点击
+	   Sky.bind(j_menuicon,myTap,function(e){
+		  // console.log('now'+isShowMenu);
+		    var e=e||window.event;
+		        e.preventDefault();
+				
+		   if(isShowMenu){
+				 j_contents.style.webkitTransform= j_contents.style.transform="translate3D(54.26%,0,0)";
+				 j_contents.style.webkitTransition= j_contents.style.transition="transform .3s";
+			 
+			 for(var i=0;i<j_menuliLen;i++){
+				  j_menuli[i].style.webkitTransition=j_menuli[i].style.transition=".3s ease-in-out "+i*0.1+"s";
+				  j_menuli[i].style.opacity=1;
+				  j_menuli[i].style.webkitTransform=j_menuli[i].style.transform="translateY(0)";
+				 }
+				
+		   }else{
+				 j_contents.style.webkitTransform= j_contents.style.transform="translate3D(0,0,0)";
+				 j_contents.style.webkitTransition= j_contents.style.transition="transform .3s";
+ 
+			    for(var i=0;i<j_menuliLen;i++){
+				  j_menuli[i].style.webkitTransition=j_menuli[i].style.transition=" .3s ease-in-out";
+				  j_menuli[i].style.webkitTransform=j_menuli[i].style.transform="translateY(50px)";
+				  j_menuli[i].style.opacity=0;
+				 }
+		  }
+		 isShowMenu=!isShowMenu;
+	   });
+	    
+	
+	//菜单滑动	
+	 Sky.bind(doc,"swipeleft",function(e){
+		         var e=e||window.event;
+		         e.preventDefault();
+		         j_contents.style.webkitTransform= j_contents.style.transform="translate3D(0,0,0)";
+				 j_contents.style.webkitTransition= j_contents.style.transition="transform .3s";
+ 
+			    for(var i=0;i<j_menuliLen;i++){
+				  j_menuli[i].style.webkitTransition=j_menuli[i].style.transition=" .3s ease-in-out";
+				  j_menuli[i].style.webkitTransform=j_menuli[i].style.transform="translateY(50px)";
+				  j_menuli[i].style.opacity=0;
+				 }
+				 isShowMenu=true;
+	 });
+	 
+	  Sky.bind(doc,"swiperight",function(e){
+		         var e=e||window.event;
+		         e.preventDefault();
+		         j_contents.style.webkitTransform= j_contents.style.transform="translate3D(54.26%,0,0)";
+				 j_contents.style.webkitTransition= j_contents.style.transition="transform .3s ";
+			 
+			   for(var i=0;i<j_menuliLen;i++){
+				  j_menuli[i].style.webkitTransition=j_menuli[i].style.transition=".3s ease-in-out "+i*0.1+"s";
+				  j_menuli[i].style.opacity=1;
+				  j_menuli[i].style.webkitTransform=j_menuli[i].style.transform="translateY(0)";
+				 }
+				isShowMenu=false;
+				
+	 });
+	 
+	 
+	 //菜单 li 模拟hover  css active arrow无效
+	  for(var i=0;i<j_menuliLen;i++){
+		   j_menuli[i].addEventListener("touchstart",function(e){
+			      var e=e||window.event;
+		          // e.preventDefault();
+			     this.classList.add('iactive');
+			   },!1);
+           
+		   
+		    j_menuli[i].addEventListener("touchend",function(e){
+				 var e=e||window.event;
+		          // e.preventDefault();
+				 this.classList.remove('iactive');	
+			},!1);
+		};
+		
+		
+		
+		
+		
+	  
+	
+	 
+});
+   
+  </script>
+</body>
+</html>

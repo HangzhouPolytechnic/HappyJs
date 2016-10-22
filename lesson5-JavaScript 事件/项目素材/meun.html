@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HapplyJs学习demo模板文件</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+</head>
+<style>
+	table {
+		font-size: 80%;
+		background: black;
+	}
+	
+	a {
+		display: block;
+		color: black;
+		text-decoration: none;
+		font: bold;
+	}
+	
+	a:hover {
+		color: #606060;
+	}
+	
+	td.menu {
+		background: #AED8E5;
+	}
+	
+	table.menu {
+		font-size: 100%;
+		position: absolute;
+		visibility: hidden;
+	}
+</style>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">普通菜单栏</h3>
+					</div>
+					<div class="panel-body">
+						<table width="100%">
+							<tr bgcolor="#FF8080">
+								<td onMouseOver="showmenu('tutorials')" onMouseOut="hidemenu('tutorials')">
+									教程<br />
+									<table class="menu" id="tutorials" width="120">
+										<tr>
+											<td class="menu"><a href=#>HTML</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href=#>XHTML</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">CSS</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">XML</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">XSL</a></td>
+										</tr>
+									</table>
+								</td>
+								<td onMouseOver="showmenu('scripting')" onMouseOut="hidemenu('scripting')">
+									脚本<br />
+									<table class="menu" id="scripting" width="120">
+										<tr>
+											<td class="menu"><a href="#">JavaScript</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">VBScript</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">DHTML</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">ASP</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">ADO</a></td>
+										</tr>
+									</table>
+								</td>
+								<td onMouseOver="showmenu('validation')" onMouseOut="hidemenu('validation')">
+									验证<br />
+									<table class="menu" id="validation" width="120">
+										<tr>
+											<td class="menu"><a href="#">验证 HTML</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">验证 XHTML</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">验证 CSS</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">验证 XML</a></td>
+										</tr>
+										<tr>
+											<td class="menu"><a href="#">验证 WML</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">bootstrop菜单栏</h3>
+					</div>
+					<div class="panel-body">
+						<nav class="navbar navbar-default" role="navigation">
+							<div class="container-fluid">
+								<div class="navbar-header">
+									<a class="navbar-brand" href="#">菜鸟教程</a>
+								</div>
+								<div>
+									<ul class="nav navbar-nav">
+										<li class="active"><a href="#">iOS</a></li>
+										<li><a href="#">SVN</a></li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Java
+					<b class="caret"></b>
+				</a>
+											<ul class="dropdown-menu">
+												<li><a href="#">jmeter</a></li>
+												<li><a href="#">EJB</a></li>
+												<li><a href="#">Jasper Report</a></li>
+												<li class="divider"></li>
+												<li><a href="#">分离的链接</a></li>
+												<li class="divider"></li>
+												<li><a href="#">另一个分离的链接</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		
+
+			function a(){
+				var e=ev || Event;
+				e.stopPropagation();
+				alert("点击了图标");
+			}
+			var b=function(){
+				alert("点击了button")
+			}
+	</script>
+	<script>
+	function showmenu(elmnt) {
+		document.getElementById(elmnt).style.visibility="visible";
+	}
+	function hidemenu(elmnt) {
+		document.getElementById(elmnt).style.visibility="hidden";
+	}
+
+   
+
+    $('li.dropdown').on("mouseover",function(){
+        $(this).addClass("open");
+    });
+
+    $('li.dropdown').on("mouseout",function(){
+        $(this).removeClass("open");
+    });
+
+</script>
+</body>
+
+</html>

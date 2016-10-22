@@ -55,7 +55,10 @@
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
 		
-		/*document.getElementById('fanzhuanButton').onclick=function(){
+		
+		/*
+			通过匿名函数对该元素的 点击事件进行绑定
+		document.getElementById('fanzhuanButton').onclick=function(){
 			fanzhuan($("#inputString0").val());
 		}
 		
@@ -63,6 +66,7 @@
 			fanzhuan(this.value);
 		}*/
 		
+		//jquery 写法 绑定 click事件 通过匿名函数的方式 注意书写方式
 		$('#fanzhuanButton').on('click',function(){
 			fanzhuan($("#inputString0").val());
 		});
@@ -71,24 +75,21 @@
 			fanzhuan(this.value);
 		});
 
-		
-		
-		
-		
-		
 		function reverseString(string){
         	return string.split("").reverse().join("");//现将字符串转换成数组 再进行反转 再将数组通过空字符串拼接
 		}
 		
-	/*	function fanzhuan(string){
-			result=reverseString(string);
-			document.getElementById("result_p").innerHTML=result;
-		}*/
-		
+		//另外一种 定义函数的方法
 		var fanzhuan=function(string){
 			result=reverseString(string);
 			document.getElementById("result_p").innerHTML=result;
 		};
+
+		/*	
+		function fanzhuan(string){
+			result=reverseString(string);
+			document.getElementById("result_p").innerHTML=result;
+		}*/
 		
     </script>
 </body>

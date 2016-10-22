@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>详细页</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/common.css"  rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+</head>
+<body  class="fill" style="background: #F1F1F1;">
+    <div class="fade"></div>
+    <div class="menu-top">
+        <img src="images/mimu.jpg" width="100%;">
+        <div class="meun-bd">
+            <div class="meun-tx">
+                <img class="meun-pic" src="images/tx.jpg" width="100%">
+                <div class="menu-v"><img src="images/v.png" width="100%"></div>
+                <div class="menu-font menu-font-lt">收到的红包<br><b>￥</b>120</div>
+                <div class="menu-font menu-font-rt">发出的红包<br><b>￥</b>120</div>
+                <div class="menu-name"><b>林小贝Betty</b><br>女 / 19岁 / 浙江杭州</div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-rz"><div class="menu-rz-bd">
+        <p><b>星柚认证</b>世界旅游小姐北京区冠军，淘女郎</p>
+    </div></div>
+    <div class="menu-rz"><div class="menu-rz-bd">
+        <p class="left"><b>加她的人</b></p>
+        <nav class="menu-rz-nav">
+            <ul>
+                <li><a href="javacript:void(0)"><img src="images/list.jpg" width="100%"></a> </li>
+                <li><a href="javacript:void(0)"><img src="images/list.jpg" width="100%"></a> </li>
+                <li><a href="javacript:void(0)"><img src="images/list.jpg" width="100%"></a> </li>
+                <li>21人</li>
+            </ul>
+        </nav>
+    </div></div>
+    <div class="menu-pic"><img src="images/pic.jpg" width="100%"></div>
+    <div class="menu-foot"><p>加她微信</p></div>
+    <!--红包-->
+    <div id="index_redpage">
+        <div class="redpage_imgbox">
+            <img src="images/view/rebg.png">
+            <div class="redpage_price"><h1>30</h1><p>元</p></div>
+        </div>
+        <h1 class="senthWho">查看林小贝Betty的微信号需要<br>30元红包</h1>
+        <ul class="workkinds">
+            <li>接通告</li>
+            <li>陪电玩</li>
+            <li>陪健身</li>
+            <li>陪吃饭</li>
+            <li>陪唱歌</li>
+            <li>陪喝酒</li>
+            <li>陪旅行</li>
+            <li>谈恋爱</li>
+        </ul>
+        <h1 class="senthWho" style="position: absolute; left: 20%; bottom:65px;">加完微信，了解更多~</h1>
+        <div class="redline"><p></p><div class="spanboxs"><span><img src="images/view/listImg.jpg"></span></div></div>
+        <div class="sentButton" id="j_sentButton">发红包</div>
+    </div>
+    <!--红包-->
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".menu-foot").click(function(){
+                $("#index_redpage,.fade").fadeIn();
+            })
+            $(".fade").click(function(){
+                $("#index_redpage,.fade").fadeOut();
+            })
+        })
+    </script>
+</body>
+</html>
