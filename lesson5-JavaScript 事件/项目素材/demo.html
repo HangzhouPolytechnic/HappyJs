@@ -55,13 +55,24 @@
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
 		
-		document.getElementById('fanzhuanButton').onclick=function(){
+		/*document.getElementById('fanzhuanButton').onclick=function(){
 			fanzhuan($("#inputString0").val());
 		}
 		
 		document.getElementById("inputString1").oninput=function(){
 			fanzhuan(this.value);
-		}
+		}*/
+		
+		$('#fanzhuanButton').on('click',function(){
+			fanzhuan($("#inputString0").val());
+		});
+		
+		$("#inputString1").on("input",function(){
+			fanzhuan(this.value);
+		});
+
+		
+		
 		
 		
 		
@@ -69,10 +80,16 @@
         	return string.split("").reverse().join("");//现将字符串转换成数组 再进行反转 再将数组通过空字符串拼接
 		}
 		
-		function fanzhuan(string){
+	/*	function fanzhuan(string){
 			result=reverseString(string);
 			document.getElementById("result_p").innerHTML=result;
-		}
+		}*/
+		
+		var fanzhuan=function(string){
+			result=reverseString(string);
+			document.getElementById("result_p").innerHTML=result;
+		};
+		
     </script>
 </body>
 
