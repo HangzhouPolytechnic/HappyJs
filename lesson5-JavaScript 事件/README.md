@@ -14,5 +14,9 @@ JavaScript 使我们有能力创建动态页面。事件是可以被 JavaScript 
 注意：事件通常与函数配合使用，当事件发生时函数才会执行。
 
 ##JavaScript的事件对象
+Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态
 
-
+```javascript
+ var e=evt||window.event;
+ 
+```
