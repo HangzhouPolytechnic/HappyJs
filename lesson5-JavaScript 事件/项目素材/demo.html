@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +7,6 @@
 	<title>HapplyJs学习demo模板文件</title>
 	<link href="libs/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -21,12 +19,10 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
-								<input type="text" class="form-control" id="inputString0" placeholder="请输入要翻转的字符">
+								<input type="text" class="form-control" id="inputString0"  placeholder="请输入要翻转的字符">
 							</div>
-							<!--将结果输出到这里来 !-->
-							<p id="result_p"></p>
-							<!-- type属性为button 否则默认执行 submit（表单提交） reset（表单重置） 事件-->
-							<button type="button" onClick="reverseString()" class="btn btn-primary">翻转</button>
+							<button type="button" class="btn btn-primary" id="fanzhuanButton" onClick="fanzhuan()" >翻转</button>
+
 						</form>
 					</div>
 				</div>
@@ -38,25 +34,35 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
-								<input type="text" class="form-control" id="inputString1" placeholder="请输入要翻转的字符">
+								<input type="text" class="form-control" id="inputString1" placeholder="请输入要翻转的字符" oninput="">
+
 							</div>
-							<p>请输出到这里:</p>
 						</form>
+					</div>
+				</div>
+                <div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">输出结果:</h3>
+					</div>
+					<div class="panel-body">
+						<p id="result_p"></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="libs/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
-	<script>
-    	function reverseString(){
-			var string=document.getElementById('inputString0').value;
-       			var result=string.split("").reverse().join("");
+    <script>
+		function reverseString(string){
+        	return string.split("").reverse().join("");//现将字符串转换成数组 再进行反转 再将数组通过空字符串拼接
+		}
+		
+		function fanzhuan(){
+			string=document.getElementById('inputString0').value;
+			result=reverseString(string);
 			document.getElementById("result_p").innerHTML=result;
-	}
+		}
     </script>
 </body>
 
