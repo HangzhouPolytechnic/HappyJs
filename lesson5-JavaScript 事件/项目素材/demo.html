@@ -23,8 +23,10 @@
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
 								<input type="text" class="form-control" id="inputString0" placeholder="请输入要翻转的字符">
 							</div>
-							<p>请输出到这里:</p>
-							<button type="submit" class="btn btn-primary">翻转</button>
+							<!--将结果输出到这里来 !-->
+							<p id="result_p"></p>
+							<!-- type属性为button 否则默认执行 submit（表单提交） reset（表单重置） 事件-->
+							<button type="button" onClick="reverseString()" class="btn btn-primary">翻转</button>
 						</form>
 					</div>
 				</div>
@@ -49,6 +51,13 @@
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="libs/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
+	<script>
+    	function reverseString(){
+			var string=document.getElementById('inputString0').value;
+       			var result=string.split("").reverse().join("");
+			document.getElementById("result_p").innerHTML=result;
+	}
+    </script>
 </body>
 
 </html>
