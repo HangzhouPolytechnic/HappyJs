@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,10 +20,10 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
-								<input type="text" class="form-control" id="inputString0" placeholder="请输入要翻转的字符">
+								<input type="text" class="form-control" id="inputString0"  placeholder="请输入要翻转的字符">
 							</div>
-							<p>请输出到这里:</p>
-							<button type="button"class="btn btn-primary" id="reserveButton" onclick="reserveString()">翻转</button>
+							<button type="button" class="btn btn-primary" id="fanzhuanButton"  onClick="reverseString0()"  >翻转</button>
+                            <!-- 使用reverseString() 方法 onClick="reverseString(document.getElementById('inputString0').value)"   -->
 						</form>
 					</div>
 				</div>
@@ -36,30 +35,47 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
-								<input type="text" class="form-control" id="inputString1" oninput="changeReserveString(this)" placeholder="请输入要翻转的字符">
+								<input type="text" class="form-control" id="inputString1" placeholder="请输入要翻转的字符" oninput="reverseString1()">
+<!-- 使用reverseString() 方法  oninput="reverseString(this.value)" -->
 							</div>
-							<p>请输出到这里:</p>
 						</form>
+					</div>
+				</div>
+                <div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">输出结果:</h3>
+					</div>
+					<div class="panel-body">
+						<p id="result_p"></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="libs/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
-	<script>
-		function reserveString(){
-			debugger;
-			var ev=ev||event;//兼容性写法
-			console.log(ev.currentTarget.innerText);
+    <script>
+	
+		
+    	function reverseString0(){
+			var string=document.getElementById('inputString0').value;
+       		var result=string.split("").reverse().join("");
+			document.getElementById("result_p").innerHTML=result;
 		}
-		function changeReserveString(a){
-			var ev=ev||event;//兼容性写法
-			console.log(a.value);
+		
+		function reverseString1(){
+			var string=document.getElementById('inputString1').value;
+       		var result=string.split("").reverse().join("");
+			document.getElementById("result_p").innerHTML=result;
 		}
-	</script>
+		
+		
+		function reverseString(string){
+			// 如何 实现一个方法 解决这个问题
+       		var result=string.split("").reverse().join("");
+			document.getElementById("result_p").innerHTML=result;
+		}
+    </script>
 </body>
 
 </html>

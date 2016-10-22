@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>HapplyJs学习demo模板文件</title>
-	<link href="libs/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
 </head>
-
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -21,10 +19,10 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
-								<input type="text" class="form-control" id="inputString0" placeholder="请输入要翻转的字符">
+								<input type="text" class="form-control" id="inputString0"  placeholder="请输入要翻转的字符">
 							</div>
-							<p>请输出到这里:</p>
-							<button type="submit" class="btn btn-primary">翻转</button>
+							<button type="button" class="btn btn-primary" id="fanzhuanButton"  >翻转</button>
+
 						</form>
 					</div>
 				</div>
@@ -37,18 +35,62 @@
 							<div class="form-group">
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
 								<input type="text" class="form-control" id="inputString1" placeholder="请输入要翻转的字符">
+
 							</div>
-							<p>请输出到这里:</p>
 						</form>
+					</div>
+				</div>
+                <div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">输出结果:</h3>
+					</div>
+					<div class="panel-body">
+						<p id="result_p"></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="libs/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+		
+		/*document.getElementById('fanzhuanButton').onclick=function(){
+			fanzhuan($("#inputString0").val());
+		}
+		
+		document.getElementById("inputString1").oninput=function(){
+			fanzhuan(this.value);
+		}*/
+		
+		$('#fanzhuanButton').on('click',function(){
+			fanzhuan($("#inputString0").val());
+		});
+		
+		$("#inputString1").on("input",function(){
+			fanzhuan(this.value);
+		});
+
+		
+		
+		
+		
+		
+		function reverseString(string){
+        	return string.split("").reverse().join("");//现将字符串转换成数组 再进行反转 再将数组通过空字符串拼接
+		}
+		
+	/*	function fanzhuan(string){
+			result=reverseString(string);
+			document.getElementById("result_p").innerHTML=result;
+		}*/
+		
+		var fanzhuan=function(string){
+			result=reverseString(string);
+			document.getElementById("result_p").innerHTML=result;
+		};
+		
+    </script>
 </body>
 
 </html>
