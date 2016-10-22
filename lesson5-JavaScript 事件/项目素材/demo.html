@@ -21,7 +21,7 @@
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
 								<input type="text" class="form-control" id="inputString0"  placeholder="请输入要翻转的字符">
 							</div>
-							<button type="button" class="btn btn-primary" id="fanzhuanButton" onClick="fanzhuan()" >翻转</button>
+							<button type="button" class="btn btn-primary" id="fanzhuanButton"  >翻转</button>
 
 						</form>
 					</div>
@@ -34,7 +34,7 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="exampleInputEmail1">请输入翻转的字符</label>
-								<input type="text" class="form-control" id="inputString1" placeholder="请输入要翻转的字符" oninput="">
+								<input type="text" class="form-control" id="inputString1" placeholder="请输入要翻转的字符">
 
 							</div>
 						</form>
@@ -54,11 +54,22 @@
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
+		
+		document.getElementById('fanzhuanButton').onclick=function(){
+			fanzhuan($("#inputString0").val());
+		}
+		
+		document.getElementById("inputString1").oninput=function(){
+			fanzhuan(this.value);
+		}
+		
+		
+		
 		function reverseString(string){
         	return string.split("").reverse().join("");//现将字符串转换成数组 再进行反转 再将数组通过空字符串拼接
 		}
-		function fanzhuan(){
-			string=document.getElementById('inputString0').value;
+		
+		function fanzhuan(string){
 			result=reverseString(string);
 			document.getElementById("result_p").innerHTML=result;
 		}
