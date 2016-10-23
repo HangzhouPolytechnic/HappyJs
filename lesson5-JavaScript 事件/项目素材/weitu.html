@@ -51,14 +51,11 @@
 			//$("#parent_ul").append("<li>追加一个li标签</li>");
 			document.getElementById('parent_ul').innerHTML+="<li>追加一个li标签</li>";
 			//document.getElementById('parent_ul').innerHTML=document.getElementById('parent_ul').innerHTML+<li>追加一个li标签</li>
-			
-			var n=document.getElementsByTagName("li").length;
-			for(i=0;i<n;i++){
-				document.getElementsByTagName("li")[i].onclick=function(){
-					alert("绑定了点击事件");
-				}
-			}
 		}
+		
+		$("#parent_ul li").on("click",function(){
+			alert("已经把要执行的代码委托到parent_ul来做了");
+		});
 		
 		
 		
