@@ -74,8 +74,11 @@
 * D.javascript
 
 10.分析下面的代码，输出结果a的值是
-Var mystring=”I am a student”
-Var a=mystring.substring(9,13)
+
+```javascript
+var mystring='I am a student'
+var a=mystring.substring(9,13)
+```
 
 * A.tude 
 * B.tuden 
