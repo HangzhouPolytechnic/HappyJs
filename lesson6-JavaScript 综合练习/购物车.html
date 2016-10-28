@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin:0;}
+        ul li{list-style: none;}
+        body{
+            font-family: microsoft yahei;
+        }
+        .ul-list{
+            overflow: hidden;
+        }
+        .box{
+            width: 765px;
+            margin: 0 auto;
+        }
+        .ul-list li{
+            float: left;
+            height: 100px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .ul-list li img{
+            width: auto;
+            height: 100px;
+        }
+        .shopping{
+            margin: 10px;
+            border: 1px solid #EBEBEB;
+            background: #FAFAFA;
+        }
+        .shopping-cart{
+            margin-top: 10px;
+            background: #eee;
+            overflow: hidden;
+        }
+        .shopping-icon{
+            width: 100px;
+            height: auto;
+            text-align: center;
+            position: relative;
+            float: left;
+        }
+        .shopping img{
+            width: 80px;
+            height: auto;
+        }
+        .shopping span#cartText{
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            margin-left: -20px;
+            color: red;
+            font-weight: bold;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+        }
+        .shopping-list{
+            padding: 0 20px 20px;
+        }
+        .shopping-list li{
+            padding: 20px;
+            border-bottom: 1px dashed #ccc;
+            overflow: hidden;
+        }
+        .del{
+            float: right;
+            cursor: pointer;
+        }
+        .del img{
+            width: 19px;
+            height: auto;
+        }
+        .shopping-warn{
+            line-height: 84px;
+            float: left;
+        }
+        .shopping-warn span{
+            color: red;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+        #cartLi img{
+            float: left;
+            margin-right: 20px;
+        }
+        .title{
+            float: left;
+        }
+        .checkbox{
+            float: left;
+            margin-right: 20px;
+        }
+        .price,.cart-num,.total-price{
+            margin-left: 10%;
+            float: left;
+        }
+        #cartText{
+            display: none;
+        }
+        .cart-num span{
+            width: 25px;
+            line-height: 25px;
+            border: 1px solid #ccc;
+            text-align: center;
+            float: left;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .cart-num input{
+            width: 50px;
+            text-align: center;
+            line-height: 25px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-left: 0;
+            border-right: 0;
+            float: left;
+        }
+        .total-price{
+            color: #FF2832;
+        }
+        .tota-priceAll{
+            float: right;
+            line-height: 84px;
+            margin-right: 20px;
+        }
+        .tota-priceAll span{
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="box">
+    <ul class="ul-list" id="liList">
+        <li >
+            <img src="http://image.meetto.cn/Uploads/goods/20151224/567b5f107ebd0.jpg@200h_200w_2e" data-goodsid="1" data-price="&yen;158"  data-name="物品1" />
+        </li>
+        <li>
+            <img src="http://image.meetto.cn/Uploads/goods/20151220/56763cab0f82d.jpg@200h_200w_2e"  data-goodsid="2" data-price="&yen;258"  data-name="物品2"/>
+        </li>
+        <li>
+            <img src="http://image.meetto.cn/Uploads/goods/20151209/5667910ab8c85.jpg@200h_200w_2e" data-goodsid="3" data-price="&yen;58"  data-name="物品3" />
+        </li>
+        <li>
+            <img src="http://image.meetto.cn/Uploads/goods/20151201/565d231b510a3.jpg@200h_200w_2e" data-goodsid="4" data-price="&yen;28"  data-name="物品4" />
+        </li>
+    </ul>
+
+    <div class="shopping">
+        <div class="shopping-list">
+            <ul id="cartLi"></ul>
+        </div>
+        <div class="shopping-cart">
+            <div class="shopping-icon">
+                <span class="glyphicon glyphicon-shopping-cart" style="font-size: 40px"></span>
+                <span id="cartText"></span>
+            </div>
+            <div class="shopping-warn" id="shopping-warn">购物车里空空的哦~~</div>
+            <div class="tota-priceAll">总价：<span>0</span>元</div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!-- <script src="js/jquery.js"></script> -->
+<script>
+    $(function(){
+       init();
+    });
+    function init(){
+        var  cart = {
+            imgList: $("#liList"),
+            addList: $("#cartLi"),
+            cartText: $("#cartText"),
+            shoppingWarn: $("#shopping-warn"),
+            endPrice:$(".tota-priceAll span"),
+            totalCount: 0,
+            totalPrice:0,
+        }
+        //添加到购物车
+        cart.imgList.on("click",function(e){
+            var target= e.target;
+            var name= $(target).attr("data-name"),
+                    price= $(target).attr("data-price"),
+                    id= $(target).attr("data-goodsid"),
+                    src= $(target).attr("src"),
+                    allPrice = price.substr(1);
+            add(id,name,price,src,allPrice);
+            cart.cartText.css("display","block");
+            //总数量
+            var addT = cart.totalCount+=1;
+            cart.cartText.text(addT);
+            cart.shoppingWarn.text("购物车一共"+addT+"个宝贝");
+            //总价
+            var sigEnd = allPrice*1;
+            var endPrice =(cart.totalPrice+=sigEnd) ;
+            cart.endPrice.html(endPrice);
+        });
+        //列表
+        cart.addList.on("click",function(e){
+            var target = e.srcElement ? e.srcElement : e.target;
+            //删除商品
+            if(target.id == "del-btn"){
+
+                var input = $(target).parents("li").find('input[type="text"]').val(),
+                        subInp = input.replace("件", '');
+                if (subInp <= 1) {
+                   del($(target).parents("li"));
+                } else {
+                    subInp --;
+                    $(target).parents("li").find('input[type="text"]').val(subInp+"件");
+
+                }
+                //总数量
+                var addT =  cart.totalCount-=1;
+                cart.cartText.text(addT);
+                cart.shoppingWarn.text("购物车一共"+addT+"个宝贝");
+                if(cart.cartText.text() == 0){
+                    cart.cartText.css("display","none");
+                    cart.shoppingWarn.text("购物车空空的哦~~");
+                }
+                //总价
+                var price = $(target).parents("li").find(".price").text(),
+                        allPrice = price.substr(1);
+                var sigEnd = allPrice*1;
+                var endPrice =(cart.totalPrice-=sigEnd) ;
+                that.endPrice.html(endPrice);
+            }
+            //增加商品
+            if( target.className == "shop-r"){
+                var input = $(target).prev("input"),
+                        price = $(target).parents("li").find(".price").text(),
+                        subPrice = price.substr(1),
+                        allPrice = $(target).parents("li").find(".total-price");
+                plus(input,subPrice,allPrice);
+                //总数量
+                var addT =  cart.totalCount+=1;
+                cart.cartText.text(addT);
+                //总价
+                var price = $(target).attr("data-price"),
+                        allPrice = price.substr(1);
+                var sigEnd = allPrice*1;
+                var endPrice =(cart.totalPrice+=sigEnd) ;
+                cart.endPrice.html(endPrice);
+            }
+            //减少商品
+            if(target.className == "shop-l"){
+                var input = $(target).next("input"),
+                        subInp = input.val().replace("件", ''),
+                        price = $(target).parents("li").find(".price").text(),
+                        subPrice = price.substr(1),
+                        allPrice = $(target).parents("li").find(".total-price");
+                minus(input,subPrice,allPrice);
+                //总数量
+                if (subInp<=1) {
+                    cart.cartText.text(cart.totalCount);
+                } else {
+                    var addT =  cart.totalCount -=1;
+                    cart.cartText.text(addT);
+                }
+                //总价
+                var price = $(target).attr("data-price"),
+                        allPrice = price.substr(1);
+                var sigEnd = allPrice*1;
+                if(subInp<=1){
+                    cart.endPrice.html(cart.totalPrice);
+                }else{
+                    var endPrice =(cart.totalPrice-=sigEnd) ;
+                    cart.endPrice.html(endPrice);
+                }
+            }
+
+        });
+    }
+    function add(id,name,price,src,allPrice) {
+        var len = $("#cartLi").find("li").length;
+        var f= 1;
+        for(var i=0;i< len;i++){
+            if($($("#cartLi").find("li")[i]).attr("data-goodsid") == id) {
+                f=0;
+                var tagLi = $("#cartLi").find("li")[i],
+                        inp = $(tagLi).find("input[type='text']").val(),
+                        upDateNum = parseInt(inp);
+                $(tagLi).find("input[type='text']").val(upDateNum+1+"件");
+                //总价
+                var sigPrice = allPrice,
+                        inpV = inp.replace("件", ''),
+                        allInp =inpV*1;
+                var allNum = (allInp*sigPrice)+(sigPrice*1);
+                $(tagLi).find(".total-price").html(allNum);
+                break;
+            }
+        }
+        if(!f) return;
+        var str="";
+        str += '<li  data-goodsid="'+id+'">'+
+                '<div class="checkbox">'+
+                '<input type="checkbox" />'+
+                '</div>'+
+                '<img src = "'+src+'" />'+
+                '<div class="title">'+name+'</div>'+
+                '<div class="price">'+price+'</div>'+
+                '<div class="cart-num">'+
+                '<span class="shop-l" id="minus'+id+'"  data-price="'+price+'">-</span>'+
+                '<input type="text" value="1件" id="numId'+id+'" />'+
+                '<span class="shop-r" id="plus'+id+'"  data-price="'+price+'">+</span>'+
+                '</div>'+
+                '<div class="total-price">'+allPrice+'</div>'+
+                '<div class="del"><span class="glyphicon glyphicon-trash" id="del-btn"></span></div>'+
+                '</li>';
+        $("#cartLi").append(str);
+    }
+    function del(node){
+        node.remove();
+    }
+
+   function plus(targetEle,sigPrice,allPrice){
+       var inp = targetEle;
+       inp.val(parseInt(inp.val())+1+"件");
+       //总价
+       var inpVal = parseInt(inp.val());
+       var sigPrice = sigPrice;
+       var allNum = inpVal*sigPrice;
+       allPrice.text(allNum);
+   }
+    function minus(targetEle,sigPrice,allPrice){
+        var inp = targetEle;
+        inp.val(parseInt(inp.val())-1+"件");
+        if(parseInt(inp.val()) < 1){
+            inp.val(1+"件");
+        }
+        //总价
+        var inpVal = parseInt(inp.val());
+        var sigPrice = sigPrice;
+        var allNum = inpVal*sigPrice;
+        if(inpVal<=1){
+            allPrice.text(sigPrice);
+        }else{
+            allPrice.text(allNum);
+        }
+    }
+</script>
+</body>
+</html>
