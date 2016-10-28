@@ -18,10 +18,14 @@ C.serach()
 D.concat()
 
 4.下面哪条语句会产生运行错误
-A.var obj=();
-B.var obj=[];
-C.var obj={};
+A.var obj=();  
+
+B.var obj=[];  
+
+C.var obj={};  
+
 D.var obj=1;//
+
 
 5.var a=10;b=20;c=4 那么 ++b+c+a++ 的运算结果是:
 A.34
