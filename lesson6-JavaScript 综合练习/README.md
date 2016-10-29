@@ -121,30 +121,50 @@ var s=parseInt(“101中学”)
 * 写一个js方法，实现6位随机数，要求输出的字符串中既要出现大写字母和小写字母数字
 
 ```javascript
-	//随机生成一个大写字母
-	function randomDAXIE(){
-		var zimubiao="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		//Math.floor(Math.random()*zimubiao.length) 随机生成0~25 数字  
-		return zimubiao[Math.floor(Math.random()*zimubiao.length)];
+	//随机生成1位大写字母
+	function randomDaxie(){
+		string="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		return string[Math.floor(Math.random()*26)];
 	}
-	//随机生成一个小写字母
-	function randomXIAOXIE(){
-		var zimubiao="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		zimubiao=zimubiao.toLowerCase();//将字符串全部转化为小写
-		//Math.floor(Math.random()*zimubiao.length) 随机生成0~25 数字  
-		return zimubiao[Math.floor(Math.random()*zimubiao.length)];
+	
+	//随机生成1位小写字母
+	function randomXiaoxie(){
+		string="ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
+		return string[Math.floor(Math.random()*26)];
 	}
-	//随机生成一个0~9的数字
+	//随机生成0~9一个字符
 	function randomNumber(){
-		//Math.floor(Math.random()*10) 随机生成0~9 数字
-		return Math.floor(Math.random()*10)
+		return Math.floor(Math.random()*10);	
 	}
-	
-	//下面 如何生成一个字符串包含 大写 小写 和数字呢 注意只有3位 
-	randomDAXIE()+randomXIAOXIE()+randomNumber()
-	
-	//要生成6位数只要
-	var result=randomDAXIE()+randomXIAOXIE()+randomNumber()+randomDAXIE()+randomXIAOXIE()+randomNumber();
+	//定义一个函数 随机生成6位随机数 该方法不够灵活 且 第一位随机数肯定大写 第二位 小写 第三位是数字
+	function randomSixCode(){
+		return randomDaxie()+randomXiaoxie()+randomNumber()+randomDaxie()+randomXiaoxie()+randomNumber();
+	}
+
+	//以生成随机数的长度为变量
+	function randomCode(length){
+		var randomCode="";
+		for(i=0;i<length;i++){//每一次循环生成一位随机字符
+			
+			var method=Math.floor(Math.random()*100);//生成0~99 数字
+			
+			switch(method%3){//取除以3的余数
+				case 0: 
+					//整除则随机生成一位大写字符
+					randomCode+=randomDaxie();
+					break;
+				case 1:
+					//余数为1则随机生成一位小写字符
+					randomCode+=randomXiaoxie()
+					break;
+				case 2:
+					//余数为2则随机生成一位数字字符
+					randomCode+=randomNumber();
+					break;
+			}
+		}
+		return randomCode;//返回随机生成的结果字符串
+	}
 ```
 
 
