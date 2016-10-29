@@ -100,6 +100,19 @@ var s=parseInt(“101中学”)
 * Javascript中设置定时任务和见个任务的方法分别是什么
 * <img>标签中的title属性和alt属性分别是什么意思
 * 写出一个文本输入框，属性为只读，最大输入字符串为20个字符
+
+```javascript
+  <!--写出一个文本输入! 最大输入字符串为6个字符 -->
+  <input type="text" value="" id="input_string" oninput="limitString()" maxlength="6" />
+  
+  function limitString(){
+		var inputString=document.getElementById("input_string").value;
+		if(inputString.length>6){//当输入的字符超过6位数时候 对输入的字符串进行截取，并且赋值到该input标签内
+			console.log(inputString.substr(0,6));
+			document.getElementById("input_string").value=inputString.substr(0,6);
+		}
+	}
+```
 * 仔细观察下面数据的排列组合，选择你认为最可能出现的情况4，2，12，28，80，（）
 * 班级44班人，从A,B,C,D,E五位候选人中选择A的票数为23张B的占票7张，C,D的票数相同，E最少得4票，那么B票的选票（）张
 
