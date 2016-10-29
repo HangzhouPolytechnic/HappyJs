@@ -124,16 +124,19 @@ var s=parseInt(“101中学”)
 	//随机生成一个大写字母
 	function randomDAXIE(){
 		var zimubiao="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		//Math.floor(Math.random()*zimubiao.length) 随机生成0~25 数字  
 		return zimubiao[Math.floor(Math.random()*zimubiao.length)];
 	}
 	//随机生成一个小写字母
 	function randomXIAOXIE(){
 		var zimubiao="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		zimubiao=zimubiao.toLowerCase();//将其转化为小写字符
+		zimubiao=zimubiao.toLowerCase();//将字符串全部转化为小写
+		//Math.floor(Math.random()*zimubiao.length) 随机生成0~25 数字  
 		return zimubiao[Math.floor(Math.random()*zimubiao.length)];
 	}
 	//随机生成一个0~9的数字
 	function randomNumber(){
+		//Math.floor(Math.random()*10) 随机生成0~9 数字
 		return Math.floor(Math.random()*10)
 	}
 	
