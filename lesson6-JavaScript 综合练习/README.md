@@ -119,4 +119,30 @@ var s=parseInt(“101中学”)
 ##编程题
 * 编写一个小程序计算1+3+5+7+……+99的值
 * 写一个js方法，实现6位随机数，要求输出的字符串中既要出现大写字母和小写字母数字
+
+```javascript
+	//随机生成一个大写字母
+	function randomDAXIE(){
+		var zimubiao="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		return zimubiao[Math.floor(Math.random()*zimubiao.length)];
+	}
+	//随机生成一个小写字母
+	function randomXIAOXIE(){
+		var zimubiao="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		zimubiao=zimubiao.toLowerCase();//将其转化为小写字符
+		return zimubiao[Math.floor(Math.random()*zimubiao.length)];
+	}
+	//随机生成一个0~9的数字
+	function randomNumber(){
+		return Math.floor(Math.random()*10)
+	}
+	
+	//下面 如何生成一个字符串包含 大写 小写 和数字呢 注意只有3位 
+	randomDAXIE()+randomXIAOXIE()+randomNumber()
+	
+	//要生成6位数只要
+	var result=randomDAXIE()+randomXIAOXIE()+randomNumber()+randomDAXIE()+randomXIAOXIE()+randomNumber();
+```
+
+
 * 写一个js方法去除集合中重复的元素例如：[1,2,3,4,1,2,3,8,9] 得到[1,2,3,4,8,9]
