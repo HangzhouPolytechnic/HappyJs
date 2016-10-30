@@ -28,6 +28,7 @@
                     <div class="panel-footer"><nav>
   <ul class="pager">
     <li class="previous"><a href="#" onClick="preImg()">上一张</a></li>
+     <li class="stop"><a id="ctrol_button"  href="#" onClick="ctrol_imgs()">停！</a></li>
     <li class="next"><a href="#" onClick="nextImg()">下一张</a></li>
   </ul>
 </nav></div>
@@ -42,7 +43,7 @@
 	
 	var imgs=["http://image.meetto.cn/Uploads/system/goods_album/-1/57bfa9b58a413.jpg@200h_200w_2e", "http://image.meetto.cn/Uploads/system/goods_album/-1/57bfa9b59770e.jpg@200h_200w_2e", "http://image.meetto.cn/Uploads/system/goods_album/-1/57bfa9b5cba3f.jpg@200h_200w_2e", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178663391294.jpg", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178664482785.jpg", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178664715398.jpg", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178712563066.jpg", "http://image.meetto.cn/Uploads/goods/20160826/57bfa9b70cfb9.jpg@200h_200w_2e"];
 	
-	
+	var interval_id="";
 	function nextImg(){
 		document.getElementById('show_img').src=imgs[++index%imgs.length];
 	}
@@ -50,8 +51,18 @@
 	function preImg(){
 		document.getElementById('show_img').src=imgs[--index%imgs.length];
 	}
+	function ctrol_imgs(){
+		if(interval_id==""){
+			interval_id=setInterval(nextImg,1000);
+			document.getElementById('ctrol_button').innerHTML="停！";
+		}else{
+			clearInterval(interval_id);
+			interval_id="";
+			$('#ctrol_button').html('开始');
+		}
 		
-	setInterval(nextImg,10);
+	}
+	interval_id=setInterval(nextImg,1000);
 	</script>
 	
 </body>
