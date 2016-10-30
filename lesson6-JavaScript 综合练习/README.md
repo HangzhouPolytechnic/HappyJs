@@ -169,3 +169,21 @@ var s=parseInt(“101中学”)
 
 
 * 写一个js方法去除集合中重复的元素例如：[1,2,3,4,1,2,3,8,9] 得到[1,2,3,4,8,9]
+```javascript
+var a=[1,2,3,4,1,2,3];
+
+function distinct_siple_array(arr){
+		var result=[];
+		var map={};//利用对象属性不能重复这个特点 对基本集合元素进行去重操作
+		debugger;
+		for(i=0;i<arr.length;i++){
+			if(!map[arr[i]]){
+				result.push(arr[i]);
+				map[arr[i]]=true;//值可以是任意值
+			}
+		}
+		return result;
+	}
+	
+	distinct_siple_array(a)
+```
