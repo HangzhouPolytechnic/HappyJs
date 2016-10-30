@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HapplyJs学习demo模板文件</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">手动轮播图</h3>
+					</div>
+					<div class="panel-body">
+				<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <a href="#" class="thumbnail">
+      <img src="http://image.meetto.cn/Uploads/goods/20151224/567b5f107ebd0.jpg@200h_200w_2e" id="show_img">
+    </a>
+  </div>
+</div>
+					</div>
+                    <div class="panel-footer"><nav>
+  <ul class="pager">
+    <li class="previous"><a href="#" onClick="preImg()">上一张</a></li>
+    <li class="next"><a href="#" onClick="nextImg()">下一张</a></li>
+  </ul>
+</nav></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+	var index=0;
+	
+	var imgs=["http://image.meetto.cn/Uploads/system/goods_album/-1/57bfa9b58a413.jpg@200h_200w_2e", "http://image.meetto.cn/Uploads/system/goods_album/-1/57bfa9b59770e.jpg@200h_200w_2e", "http://image.meetto.cn/Uploads/system/goods_album/-1/57bfa9b5cba3f.jpg@200h_200w_2e", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178663391294.jpg", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178664482785.jpg", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178664715398.jpg", "http://image.meetto.cn//ueditor/cgy/image/20160826/1472178712563066.jpg", "http://image.meetto.cn/Uploads/goods/20160826/57bfa9b70cfb9.jpg@200h_200w_2e"];
+	
+	
+	function nextImg(){
+		document.getElementById('show_img').src=imgs[++index%imgs.length];
+	}
+	
+	function preImg(){
+		document.getElementById('show_img').src=imgs[--index%imgs.length];
+	}
+	</script>
+	
+</body>
+
+</html>
