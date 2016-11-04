@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HapplyJs学习demo模板文件</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">普通菜单栏</h3>
+					</div>
+					<div class="panel-body" onclick="b()">
+						<button class="btn btn-primary" onclick="a()">hellow</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+	
+	</script>
+
+</body>
+
+</html>
+
+<script type='text/javascript'>
+        function fys(){
+            alert("父元素");
+        }
+        function zys(){
+            alert("子元素");
+            event.stopPropagation();
+        }
+</script>
+<div id="cc" onclick="fys()" style="width:100px; height:20px; background:red;">
+	<p onclick="zys()" id="dd">1123</p>
+</div>
+</script>
+
+</html>
