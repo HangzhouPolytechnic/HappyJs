@@ -207,41 +207,33 @@
 	<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<script>
-        function del(node){
-            node.remove();
+        function del(){
+           
         }
-
         function plus(e){
 		  debugger
-          var price=e.getAttribute("data-price") //获取自定义属性  产品的价格
+          var price=getProductprice(e);//获取自定义属性  产品的价格
           var currentNumber=getNumber()+1
           setNumber(currentNumber);
-		  setProductTotalPrice(currentNumber,parseFloat(price));
+		  setProductTotalPrice(parseFloat(price),currentNumber);
         }
-
         function minus(e){
         
         }
-
-        function getProductprice(){
-
+        function getProductprice(e){
+			return e.getAttribute("data-price") 
         }
-
-
         function getNumber(){
            var number_string=document.getElementById('numId1').value;
            var number=number_string.substring(0,number_string.indexOf('件'));//截取到 件出现位置
            return parseInt(number);
         }
-
         function setNumber(n){
             document.getElementById('numId1').value=n+"件";
         }
-
 		function setProductTotalPrice(price,number){
 			document.getElementById('product_total_price').innerHTML=(price*number);
 		}
-
 </script>
 </body>
 
