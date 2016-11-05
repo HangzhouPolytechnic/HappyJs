@@ -188,17 +188,16 @@
                     <input type="text" value="1件" id="numId1">
                 <span class="shop-r" id="plus1" data-price="158" onclick="plus(this)">+</span>
             </div>
-			<div class="total-price" id="product_total_price">158</div>
+			<div class="total-price">158</div>
 			<div class="del"><span class="glyphicon glyphicon-trash" id="del-btn"></span></div>
 			</li>
 			</ul>
 		</div>
 		<div class="shopping-cart">
 			<div class="shopping-icon">
-				<span class="glyphicon glyphicon-shopping-cart" style="font-size: 40px"></span>
+				<span class="glyphicon glyphicon-shopping-cart" style="font-size: 40px; margin-top: 20px;"></span>
 				<span id="cartText"></span>
 			</div>
-			<div class="shopping-warn" id="shopping-warn">购物车里空空的哦~~</div>
 			<div class="tota-priceAll">总价：<span>0</span>元</div>
 		</div>
 
@@ -213,27 +212,34 @@
         function plus(e){
 		  debugger
           var price=getProductprice(e); 
-          var currentNumber=getNumber()+1;
-          setNumber(currentNumber);
-		  setProductTotalPrice(currentNumber,price);
+          var currentNumber=getNumber(e)+1;
+          setNumber(currentNumber,e);
+		  setProductTotalPrice(price,currentNumber,e);
         }
         function minus(e){
-        
+           var price=getProductprice(e); 
+		   if(getNumber()>1){
+ 				var currentNumber=getNumber(e)-1;
+         	    setNumber(currentNumber,e);
+		  	    setProductTotalPrice(currentNumber,price);
+		   }
+         
         }
         function getProductprice(e){
 			return parseFloat(e.getAttribute("data-price"))
         }
 		
-        function getNumber(){
-           var number_string=document.getElementById('numId1').value;
+        function getNumber(e){
+           var number_string= e.previousElementSibling.value//document.getElementById('numId1').value;
            var number=number_string.substring(0,number_string.indexOf('件'));//截取到 件出现位置
            return parseInt(number);
         }
-        function setNumber(n){
-            document.getElementById('numId1').value=n+"件";
+        function setNumber(n,e){
+			e.previousElementSibling.value=n+"件";
+            //document.getElementById('numId1').value=
         }
-		function setProductTotalPrice(price,number){
-			document.getElementById('product_total_price').innerHTML=(price*number);
+		function setProductTotalPrice(price,number,e){
+			e.parentNode.nextElementSibling.innerHTML=(price*number);
 		}
 </script>
 </body>
