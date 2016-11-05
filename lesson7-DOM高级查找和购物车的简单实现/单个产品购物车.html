@@ -185,10 +185,10 @@
 			<div class="price">158</div>
 			<div class="cart-num">
                 <span class="shop-l" id="minus1" data-price="158" onclick="minus(this)">-</span>
-                    <input type="text" value="1件" id="numId1">
+                 <input type="text" value="1件">
                 <span class="shop-r" id="plus1" data-price="158" onclick="plus(this)">+</span>
             </div>
-			<div class="total-price" id="product_total_price">158</div>
+			<div class="total-price">158</div>
 			<div class="del"><span class="glyphicon glyphicon-trash" id="del-btn"></span></div>
 			</li>
 			</ul>
@@ -211,28 +211,32 @@
            
         }
         function plus(e){
-		  debugger
           var price=getProductprice(e);//获取自定义属性  产品的价格
-          var currentNumber=getNumber()+1
-          setNumber(currentNumber);
-		  setProductTotalPrice(parseFloat(price),currentNumber);
+          var currentNumber=getNumber(e)+1
+          setNumber(currentNumber,e);
+		  setProductTotalPrice(parseFloat(price),currentNumber,e);
         }
         function minus(e){
-        
+          var price=getProductprice(e);//获取自定义属性  产品的价格  
+          var currentNumber=(getNumber(e)==1?1:getNumber(e)-1);
+          setNumber(currentNumber);
+		  setProductTotalPrice(parseFloat(price),currentNumber,e);
         }
         function getProductprice(e){
 			return e.getAttribute("data-price") 
         }
-        function getNumber(){
-           var number_string=document.getElementById('numId1').value;
+        function getNumber(e){
+			debugger
+           var number_string=e.previousElementSibling.value;
            var number=number_string.substring(0,number_string.indexOf('件'));//截取到 件出现位置
            return parseInt(number);
         }
-        function setNumber(n){
-            document.getElementById('numId1').value=n+"件";
+        function setNumber(n,e){
+          	e.previousElementSibling.value=n+"件";
         }
-		function setProductTotalPrice(price,number){
-			document.getElementById('product_total_price').innerHTML=(price*number);
+		function setProductTotalPrice(price,number,e){
+			debugger
+			e.parentNode.nextElementSibling.innerHTML=(price*number);
 		}
 </script>
 </body>
