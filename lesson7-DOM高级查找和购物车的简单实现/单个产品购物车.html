@@ -212,11 +212,10 @@
         }
 
         function plus(e){
-			debugger
+		  debugger
           var price=e.getAttribute("data-price") //获取自定义属性  产品的价格
           var currentNumber=getNumber()+1
           setNumber(currentNumber);
-
 		  setProductTotalPrice(currentNumber,parseFloat(price));
         }
 
