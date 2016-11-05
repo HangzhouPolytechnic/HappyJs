@@ -29,6 +29,16 @@
 获取已知节点（neighbourNode）的前一个节点，这个属性和前面的firstChild、lastChild一样都似乎可以递归使用的。获取哥哥节点，在它前一个
 * neighbourNode.nextSibling
 获取已知节点（neighbourNode）的下一个节点，同样支持递归。获取弟弟节点，在它后一个
+### nextSibling 与 nextElementSibling 的区别
+nextElementSibling 总会返回一个节点中的Element元素. nextSibling 能够返回一个节点当中的任何内容（包含但不限于 Element 及 Text 节点）. 下面的这个例子就非常好的体现了这点。
+
+<p><span id="span-01">Here is span-01</span>
+Some text at the top level
+<span id="span-02">Here is span-02</span></p>
+
+当我获取 span-01 的下一个兄弟节点时，用 document.getElementById('span-01').nextElementSibling 成功获取了 span-02 元素
+但如果换一个方式，用 document.getElementById('span-01').nextSibling 就返回了一个文本节点 "Some text at the top level"，而不是 span-02 元素.
+
 ##通过子节点获取父节点
 
 * childNode.parentNode
