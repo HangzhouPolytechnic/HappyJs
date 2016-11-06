@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		ul li {
+			list-style: none;
+		}
+		
+		body {
+			font-family: microsoft yahei;
+		}
+		
+		.ul-list {
+			overflow: hidden;
+		}
+		
+		.box {
+			width: 765px;
+			margin: 0 auto;
+		}
+		
+		.ul-list li {
+			float: left;
+			height: 100px;
+			margin: 10px;
+			cursor: pointer;
+		}
+		
+		.ul-list li img {
+			width: auto;
+			height: 100px;
+		}
+		
+		.shopping {
+			margin: 10px;
+			border: 1px solid #EBEBEB;
+			background: #FAFAFA;
+		}
+		
+		.shopping-cart {
+			margin-top: 10px;
+			background: #eee;
+			overflow: hidden;
+		}
+		
+		.shopping-icon {
+			width: 100px;
+			height: auto;
+			text-align: center;
+			position: relative;
+			float: left;
+		}
+		
+		.shopping img {
+			width: 80px;
+			height: auto;
+		}
+		
+		.shopping span#cartText {
+			position: absolute;
+			top: 10px;
+			left: 50%;
+			margin-left: -20px;
+			color: red;
+			font-weight: bold;
+			border: 2px solid #ddd;
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			background: #fff;
+		}
+		
+		.shopping-list {
+			padding: 0 20px 20px;
+		}
+		
+		.shopping-list li {
+			padding: 20px;
+			border-bottom: 1px dashed #ccc;
+			overflow: hidden;
+		}
+		
+		.del {
+			float: right;
+			cursor: pointer;
+		}
+		
+		.del img {
+			width: 19px;
+			height: auto;
+		}
+		
+		.shopping-warn {
+			line-height: 84px;
+			float: left;
+		}
+		
+		.shopping-warn span {
+			color: red;
+			font-size: 16px;
+			margin: 0 5px;
+		}
+		
+		#cartLi img {
+			float: left;
+			margin-right: 20px;
+		}
+		
+		.title {
+			float: left;
+		}
+		
+		.checkbox {
+			float: left;
+			margin-right: 20px;
+		}
+		
+		.price,
+		.cart-num,
+		.total-price {
+			margin-left: 10%;
+			float: left;
+		}
+		
+		#cartText {
+			display: none;
+		}
+		
+		.cart-num span {
+			width: 25px;
+			line-height: 25px;
+			border: 1px solid #ccc;
+			text-align: center;
+			float: left;
+			font-weight: bold;
+			font-size: 20px;
+			cursor: pointer;
+		}
+		
+		.cart-num input {
+			width: 50px;
+			text-align: center;
+			line-height: 25px;
+			border-top: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+			border-left: 0;
+			border-right: 0;
+			float: left;
+		}
+		
+		.total-price {
+			color: #FF2832;
+		}
+		
+		.tota-priceAll {
+			float: right;
+			line-height: 84px;
+			margin-right: 20px;
+		}
+		
+		.tota-priceAll span {
+			color: red;
+		}
+	</style>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="box">
+		<ul class="ul-list" id="liList">
+			<li>
+				<img src="http://image.meetto.cn/Uploads/goods/20151224/567b5f107ebd0.jpg@200h_200w_2e" onclick="joinCart(this)" data-goodsid="1"
+					data-price="158" data-name="物品1" />
+			</li>
+			<li>
+				<img src="http://image.meetto.cn/Uploads/goods/20151220/56763cab0f82d.jpg@200h_200w_2e" onclick="joinCart(this)" data-goodsid="2"
+					data-price="258" data-name="物品2" />
+			</li>
+			<li>
+				<img src="http://image.meetto.cn/Uploads/goods/20151209/5667910ab8c85.jpg@200h_200w_2e" onclick="joinCart(this)" data-goodsid="3"
+					data-price="58" data-name="物品3" />
+			</li>
+			<li>
+				<img src="http://image.meetto.cn/Uploads/goods/20151201/565d231b510a3.jpg@200h_200w_2e" onclick="joinCart(this)" data-goodsid="4"
+					data-price="28" data-name="物品4" />
+			</li>
+		</ul>
+		<div class="shopping">
+			<div class="shopping-list">
+				<ul id="cartLi">
+
+				</ul>
+			</div>
+			<div class="shopping-cart">
+				<div class="shopping-icon">
+					<span class="glyphicon glyphicon-shopping-cart" style="font-size: 40px;margin-top:20px;"></span>
+					<span id="cartText"></span>
+				</div>
+				<div class="tota-priceAll">总价：<span id="all_price">0</span>元</div>
+			</div>
+
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script>
+		//用来去除重复的对象
+        var my_cart={};
+        //添加购物车
+        function joinCart(p){
+            goods_id=p.getAttribute('data-goodsid');
+            if(!my_cart[goods_id]){
+                my_cart[goods_id]=true;
+                src=p.src;
+                name=p.getAttribute('data-name');
+                price=p.getAttribute('data-price');
+                str = '<li data-goodsid="'+goods_id+'">'+
+                        '<div class="checkbox">'+
+                        '<input type="checkbox" />'+
+                        '</div>'+
+                        '<img src = "'+src+'" />'+
+                        '<div class="title">'+name+'</div>'+
+                        '<div class="price">'+price+'</div>'+
+                        '<div class="cart-num">'+
+                        '<span class="shop-l" onclick="minus(this)" data-price="'+price+'">-</span>'+
+                        '<input type="text" value="1件" />'+
+                        '<span class="shop-r" onclick="plus(this)" data-price="'+price+'">+</span>'+
+                        '</div>'+
+                        '<div class="total-price">'+price+'</div>'+
+                        '<div class="del"><span onclick="del(this)" class="glyphicon glyphicon-trash" id="del-btn"></span></div>'+
+                        '</li>';
+                document.getElementById("cartLi").innerHTML+=str;
+            }
+			setAllproductprice();
+        }
+        //移除 
+        function del(node){
+           if(confirm("确定要将该产品移除购物车?")){
+                goods_id=node.parentNode.parentNode.getAttribute('data-goodsid');
+                delete my_cart[goods_id];
+				node.parentNode.parentNode.remove();//找到 自己所属li标签 调用remove（）方法
+				setAllproductprice()
+		   }
+        }
+        function plus(e){
+          var price=getProductprice(e);//获取自定义属性  产品的价格
+          var currentNumber=getNumber(e)+1
+          setNumber(currentNumber,e);
+		  setProductTotalPrice(parseFloat(price),currentNumber,e);
+		  setAllproductprice();
+        }
+        function minus(e){
+          var price=getProductprice(e);//获取自定义属性  产品的价格
+		  var result="";
+          var currentNumber=(getNumber(e)==1?1:getNumber(e)-1);
+          setNumber(currentNumber,e);
+		  setProductTotalPrice(parseFloat(price),currentNumber,e);
+		  setAllproductprice();
+        }
+        function getProductprice(e){
+			return e.getAttribute("data-price") 
+        }
+        function getNumber(e){
+           var number_string=e.parentNode.children[1].value;//其父类的第二个孩子 就是专门负责记录该产品的购买个数的
+           var number=number_string.substring(0,number_string.indexOf('件'));//截取到 件出现位置
+           return parseInt(number);
+        }
+        function setNumber(n,e){
+          	e.parentNode.children[1].value=n+"件";
+        }
+		function setProductTotalPrice(price,number,e){
+			e.parentNode.nextElementSibling.innerHTML=(price*number);
+		}
+		
+		function setAllproductprice(){
+			var n=document.getElementsByClassName('total-price').length;
+			var allprice=0;
+			for(i=0;i<n;i++){
+				allprice+=parseFloat(document.getElementsByClassName('total-price')[i].innerHTML);
+				//allprice=allprice+parseFloat(document.getElementsByClassName('total-price')[i].innerHTML);
+			}
+			document.getElementById('all_price').innerHTML=allprice;
+		}
+</script>
+</body>
+
+</html>
