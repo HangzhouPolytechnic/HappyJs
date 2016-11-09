@@ -34,7 +34,7 @@
 * neighbourNode.nextSibling<br/>
 获取已知节点（neighbourNode）的下一个节点，同样支持递归。获取弟弟节点，在它后一个
 
-### nextSibling 与 nextElementSibling 
+### nextSibling 与 nextElementSibling的区别 
 注意:同样适用于previousSibling和previousElementSibling
 
 nextElementSibling 总会返回一个节点中的Element元素，nextSibling 能够返回一个节点当中的任何内容（包含但不限于 Element 及 Text 节点）。 下面的这个例子就非常好的体现了这点。
