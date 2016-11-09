@@ -18,13 +18,20 @@
 
 ##通过父节点获取子节点
 
-* parentObj.firstChild<br/>
+* parentObj.firstChild
+
 如果节点为已知节点（parentObj）的第一个子节点就可以使用这个方法。可以以递归使用的
-* parentObj.lastChild<br/>
+
+* parentObj.lastChild
+
 如果节点为已知节点（parentObj）的最后一个子节点。可以以递归使用的
-* parentObj.children<br/>
+
+* parentObj.children
+
 注意：经测试发现，在IE7上获取的是直接子节点的数组，而在Firefox2.0.0.11上获取的是所有子节点即包括子节点的子节点。
+
 * parentObj.getElementsByTagName(tagName) 
+
 例如：parentObj.getElementsByTagName('a')返回已知的子节点中的所有超链接。
 
 ##通过父节点获取兄弟节点
