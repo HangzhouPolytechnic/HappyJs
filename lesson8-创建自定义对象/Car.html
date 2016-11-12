@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建汽车对象对象</title>
+</head>
+
+<body id="body">	
+	
+</body>
+<script>
+	car1=new Car('BMW',"X5");
+
+	function Car(brand,model){
+		this.brand=brand;
+		this.model=model;
+		this.move=function(){
+			document.getElementById(model).style.marginLeft=(parseInt(document.getElementById(model).style.marginLeft)+100)+"px";
+		};
+		this.backmove=function(){
+			document.getElementById(model).style.marginLeft=(parseInt(document.getElementById(model).style.marginLeft)-50)+"px";
+		};
+		this.dd=function(){
+			alert('滴滴');
+		};
+		if(this.brand=="BMW"){
+			this.img="http://img.emao.net/car/cover/nd/baa/erdq.png"	
+		}else if(this.brand="TOYOTA"){
+			this.img="http://imgsrc.baidu.com/forum/w%3D580/sign=d01d952933adcbef01347e0e9cad2e0e/2df5e0fe9925bc315cdfad755cdf8db1ca137058.jpg";
+		}
+		document.getElementById('body').innerHTML+="<div style='margin-left:0px' id="+model+"><img style='width:100px' src="+this.img+"></img></span></div>";
+	}
+	
+</script>
+
+</html>
