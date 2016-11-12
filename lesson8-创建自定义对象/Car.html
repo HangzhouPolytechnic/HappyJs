@@ -1,36 +1,97 @@
-<!DOCTYPE>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>创建汽车对象对象</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>屏幕中购物车</title>
 </head>
-
-<body id="body">	
-	
+<body id="body" style="margin: 0 0 0 0;padding:0 0 0 0;">
 </body>
-<script>
-	car1=new Car('BMW',"X5");
-
-	function Car(brand,model){
-		this.brand=brand;
-		this.model=model;
-		this.move=function(){
-			document.getElementById(model).style.marginLeft=(parseInt(document.getElementById(model).style.marginLeft)+100)+"px";
-		};
-		this.backmove=function(){
-			document.getElementById(model).style.marginLeft=(parseInt(document.getElementById(model).style.marginLeft)-50)+"px";
-		};
-		this.dd=function(){
-			alert('滴滴');
-		};
-		if(this.brand=="BMW"){
-			this.img="http://img.emao.net/car/cover/nd/baa/erdq.png"	
-		}else if(this.brand="TOYOTA"){
-			this.img="http://imgsrc.baidu.com/forum/w%3D580/sign=d01d952933adcbef01347e0e9cad2e0e/2df5e0fe9925bc315cdfad755cdf8db1ca137058.jpg";
-		}
-		document.getElementById('body').innerHTML+="<div style='margin-left:0px' id="+model+"><img style='width:100px' src="+this.img+"></img></span></div>";
+<script type="text/javascript">
+car1=new car('BMW',"X5");
+function car(brand,model){
+	this.brand=brand;
+	this.model=model;
+	//获取汽车X轴坐标
+	this.getX=function(){
+		return parseInt(document.getElementById(model).style.marginLeft);
 	}
-	
-</script>
+	//获取汽车Y轴坐标
+	this.getY=function(){
+		return parseInt(document.getElementById(model).style.marginTop);
+	}
+	//设置X轴坐标
+	this.setX=function(x){
+		document.getElementById(model).style.marginLeft=x+"px";
+	}
+	//设置Y轴坐标
+	this.setY=function(y){
+		document.getElementById(model).style.marginTop=y+"px";
+	}
+	//横向往有移动 step单位 
+	this.move=function (step){
+		document.getElementById(model).style.marginLeft=(parseInt(document.getElementById(model).style.marginLeft)+step)+"px";
+	};
+	//竖向移动 step单位 
+	this.down=function (step){
+		document.getElementById(model).style.marginTop=(parseInt(document.getElementById(model).style.marginTop)+step)+"px";
+	};
+	this.dd=function(){
+		alert("滴滴")
+	};
+		
+	if(this.brand=="BMW"){
+		this.img="http://img.emao.net/car/cover/nd/baa/erdq.png"
+	}else if(this.brand="TOYOTA"){
+		this.img="http://imgsrc.baidu.com/forum/w%3D580/sign=d01d952933adcbef01347e0e9cad2e0e/2df5e0fe9925bc315cdfad755cdf8db1ca137058.jpg";
+    }
+	car.prototype.width=100;//图片的宽度
+	car.prototype.height=75;//图片的高度
+	document.getElementById('body').innerHTML+="<div style='margin-left:0px;margin-top:0px' id="+model+"><img style='width:"+this.width+"px;height:"+this.height+";' src="+this.img+"></img></span></div>";
+}
 
+
+
+document.onkeydown=function(){
+	var default_step=100;//默认移动的步长
+	var e=event;
+	//向右边移动
+	if(e.keyCode==39){
+	    if(car1.getX()+car1.width+default_step>document.body.clientWidth){
+			default_step=document.body.clientWidth-car1.getX()-car1.width;
+		}
+		car1.move(default_step);
+	}
+	//向左边移动
+	if(e.keyCode==37){
+		if(car1.getX()-default_step<0){
+			default_step=car1.getX();
+		}
+		car1.move(default_step*-1);
+	}
+	//向下移动
+	if(e.keyCode==40){
+		abc=car1.getY()+car1.height+default_step;
+		if(abc>window.innerHeight){
+			default_step=window.innerHeight-car1.getY()-car1.height;
+		}
+		car1.down(default_step);
+	}
+	//向上移动
+	if(e.keyCode==38){
+		if(car1.getY()-default_step<0){
+			default_step=car1.getY();
+		}
+		car1.down(default_step*-1);
+	}
+}
+window.onresize=function(){
+	if(car1.getX()+car1.width>document.body.clientWidth){
+		car1.setX(document.body.clientWidth-car1.width);
+	}
+	if(car1.getY()+car1.height>window.innerHeight){
+		car1.setY(window.innerHeight-car1.height);
+	}
+}
+</script>
 </html>
