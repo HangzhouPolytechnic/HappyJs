@@ -24,8 +24,8 @@ function Car(brand,model){
 　　　this.name=name;
 　　　this.model=model;
 }
-var car1=Car("BMW","X5");
-var car2=Car("TOYOTA","AE86");
+var car1=new Car("BMW","X5");//创建一个Car 对象 命名 car1
+var car2=new Car("TOYOTA","AE86");//创建一个Car 对象 命名 car2
 
 //这时car1和car2会自动含有一个constructor属性，指向它们的构造函数。　
 cat1.constructor == Car //true
