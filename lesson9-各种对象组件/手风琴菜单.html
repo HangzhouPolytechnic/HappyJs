@@ -1,0 +1,86 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>手风琴菜单</title>
+<style>
+.menu_list{margin:10px auto;width:185px;}
+.menu_head{width:185px;height:47px;line-height:47px;padding-left:38px;font-size:14px;color:#525252;cursor:pointer;border:1px solid #e1e1e1;position:relative;font-weight:bold;background:#f1f1f1 url(images/pro_left.png) center right no-repeat;margin:0;}
+.menu_list .current{background:#f1f1f1 url(images/pro_down.png) center right no-repeat;}
+.menu_body{width:223px;height:auto;overflow:hidden;line-height:38px;border-left:1px solid #e1e1e1;background:#fff;border-right:1px solid #e1e1e1;display:none;}
+.menu_body a{display:block;width:223px;height:38px;line-height:38px;padding-left:38px;color:#777777;background:#fff;text-decoration:none;border-bottom:1px solid #e1e1e1;}
+.menu_body a:hover{text-decoration:none;}
+</style>
+</head>
+<body>
+ <div id="firstpane" class="menu_list">
+    <p class="menu_head current">哲学</p>
+    <div class="menu_body" >
+      <a href="#">科学技术哲学</a>
+      <a href="#">宗教学</a>
+      <a href="#">美学</a>
+      <a href="#">伦理学</a>
+      <a href="#">逻辑学</a>
+      <a href="#">外国哲学</a>
+      <a href="#">中国哲学</a>
+      <a href="#">马克思主义哲学</a>
+    </div>
+    <p class="menu_head">经济学</p>
+    <div class="menu_body" >
+      <a href="#">应用经济学</a>
+      <a href="#">理论经济学</a>
+      <a href="#">国民经济学</a>
+      <a href="#">区域经济学</a>
+      <a href="#">产业经济学</a>
+      <a href="#">国际贸易学</a>
+      <a href="#">劳动经济学</a>
+      <a href="#">政治经济学</a>
+    </div>
+    <p class="menu_head">法学</p>
+    <div class="menu_body" >
+      <a href="#">马克思主义基本原理</a>
+      <a href="#">马克思主义发展史</a>
+      <a href="#">马克思主义中国化研究</a>
+      <a href="#">国外马克思主义研究</a>
+      <a href="#">思想政治教育</a>
+    </div>
+    <p class="menu_head">教育学</p>
+    <div class="menu_body" >
+      <a href="#">体育人文社会学</a>
+      <a href="#">体育教育训练学</a>
+      <a href="#">民族传统体育学</a>
+      <a href="#">发展与教育心理学</a>
+      <a href="#">应用心理学</a>
+      <a href="#">教育学原理</a>
+      <a href="#">课程与教学论</a>
+      <a href="#">比较教育学</a>
+      <a href="#">学前教育学</a>
+      <a href="#">高等教育学</a>
+    </div>
+    <p class="menu_head">工学</p>
+    <div class="menu_body" >
+      <a href="#">一般力学与力学基础</a>
+      <a href="#">固体力学</a>
+      <a href="#">流体力学</a>
+      <a href="#">工程力学</a>
+      <a href="#">机械制造及其自动化</a>
+      <a href="#">机械电子工程</a>
+      <a href="#">机械设计及理论</a>
+      <a href="#">仪器科学与技术</a>
+      <a href="#">精密仪器及机械</a>
+      <a href="#">测试计量技术及仪器</a>
+    </div>
+</div>
+<script>
+$(function(){
+	// $("#firstpane .menu_body:eq(0)").show();
+      $("#firstpane .menu_body:first").show();
+	$("#firstpane p.menu_head").click(function(){
+		$(this).addClass("current").next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
+		$(this).siblings().removeClass("current");
+	});
+});
+</script>
+</body>
+</html>

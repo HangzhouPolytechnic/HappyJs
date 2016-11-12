@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>屏幕中购物车</title>
@@ -35,18 +34,17 @@ function car(brand,model){
 	//竖向移动 step单位 
 	this.down=function (step){
 		document.getElementById(model).style.marginTop=(parseInt(document.getElementById(model).style.marginTop)+step)+"px";
-	};
-	this.dd=function(){
-		alert("滴滴")
-	};
-		
+	};		
 	if(this.brand=="BMW"){
 		this.img="http://img.emao.net/car/cover/nd/baa/erdq.png"
 	}else if(this.brand="TOYOTA"){
 		this.img="http://imgsrc.baidu.com/forum/w%3D580/sign=d01d952933adcbef01347e0e9cad2e0e/2df5e0fe9925bc315cdfad755cdf8db1ca137058.jpg";
     }
-	car.prototype.width=100;//图片的宽度
+	car.prototype.width=100;//图片的宽度 该属性
 	car.prototype.height=75;//图片的高度
+	car.prototype.dd=function(){
+		alert("滴滴");//公共属性
+	};
 	document.getElementById('body').innerHTML+="<div style='margin-left:0px;margin-top:0px' id="+model+"><img style='width:"+this.width+"px;height:"+this.height+";' src="+this.img+"></img></span></div>";
 }
 
@@ -86,6 +84,7 @@ document.onkeydown=function(){
 	}
 }
 window.onresize=function(){
+
 	if(car1.getX()+car1.width>document.body.clientWidth){
 		car1.setX(document.body.clientWidth-car1.width);
 	}
