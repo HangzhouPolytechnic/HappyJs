@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>碰撞逻辑-屏幕中的车</title>
+</head>
+<style>
+.block {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	background-image: url(https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1478999559&di=640014350db3bf43bab4329c3ee8ef75&src=http://pic40.nipic.com/20140409/9038982_100123582143_2.jpg)
+}
+body {
+	position: relative;
+}
+</style>
+<body id="body" style="margin: 0 0 0 0;padding:0 0 0 0;">
+</body>
+<script type="text/javascript">
+var blocks=[];//专门存放墙块数组
+
+car1=new Car('BMW',"X5");
+
+initBlock(1);//该方法用来生成页面中墙块的个数
+
+function initBlock(n){
+	for(i=0;i<n;i++){
+		var left= randomRange(0,document.body.clientWidth-100);
+		var top=randomRange(0,window.innerHeight-100);
+		blocks.push(new Block(left,top));//将生成的墙块存放到block数组内
+	}
+}
+//墙块自定义对象
+function Block(left,top){
+	this.left=left;
+	this.top=top;
+	Block.prototype.width=100;
+	Block.prototype.height=100;
+	document.getElementById('body').innerHTML+='<div class="block" style="left:'+this.left+'px;top:'+this.top+'px;">			</div>';
+}
+
+
+
+function Car(brand,model){
+	this.brand=brand;
+	this.model=model;
+	//获取汽车X轴坐标
+	this.getX=function(){
+		return parseInt(document.getElementById(model).style.left);
+	}
+	//获取汽车Y轴坐标
+	this.getY=function(){
+		return parseInt(document.getElementById(model).style.top);
+	}
+	//设置X轴坐标
+	this.setX=function(x){
+		document.getElementById(model).style.left=x+"px";
+	}
+	//设置Y轴坐标
+	this.setY=function(y){
+		document.getElementById(model).style.top=y+"px";
+	}
+	//横向往有移动 step单位 
+	this.move=function (step){
+		document.getElementById(model).style.left=(parseInt(document.getElementById(model).style.left)+step)+"px";
+	};
+	//竖向移动 step单位 
+	this.down=function (step){
+		document.getElementById(model).style.top=(parseInt(document.getElementById(model).style.top)+step)+"px";
+	};		
+	if(this.brand=="BMW"){
+		this.img="http://img.emao.net/car/cover/nd/baa/erdq.png"
+	}else if(this.brand="TOYOTA"){
+		this.img="http://imgsrc.baidu.com/forum/w%3D580/sign=d01d952933adcbef01347e0e9cad2e0e/2df5e0fe9925bc315cdfad755cdf8db1ca137058.jpg";
+    }
+
+	Car.prototype.width=100;//图片的宽度 该属性
+	Car.prototype.height=75;//图片的高度
+	Car.prototype.dd=function(){
+		alert("滴滴");//公共属性
+	};
+	document.getElementById('body').innerHTML+="<div style='z-index:1000;position:absolute;left:0px;top:0px;' id="+model+"><img style='width:"+this.width+"px;height:"+this.height+";' src="+this.img+"></img></span></div>";
+}
+document.onkeydown=function(){
+	var default_step=100;//默认移动的步长
+	var e=event;
+	//向右边移动
+	if(e.keyCode==39){
+	    if(car1.getX()+car1.width+default_step>document.body.clientWidth){
+			default_step=document.body.clientWidth-car1.getX()-car1.width;
+		}
+		car1.move(default_step);
+		judege();
+	}
+	//向左边移动
+	if(e.keyCode==37){
+		if(car1.getX()-default_step<0){
+			default_step=car1.getX();
+		}
+		car1.move(default_step*-1);
+		judege();
+	}
+	//向下移动
+	if(e.keyCode==40){
+		abc=car1.getY()+car1.height+default_step;
+		if(abc>window.innerHeight){
+			default_step=window.innerHeight-car1.getY()-car1.height;
+		}
+		car1.down(default_step);
+		judege();
+	}
+	//向上移动
+	if(e.keyCode==38){
+		if(car1.getY()-default_step<0){
+			default_step=car1.getY();
+		}
+		car1.down(default_step*-1);
+		judege();
+	}
+}
+window.onresize=function(){
+	if(car1.getX()+car1.width>document.body.clientWidth){
+		car1.setX(document.body.clientWidth-car1.width);
+	}
+	if(car1.getY()+car1.height>window.innerHeight){
+		car1.setY(window.innerHeight-car1.height);
+	}
+}
+
+//判断小车是否和block数组里的墙块进行碰撞
+function judege(){
+	for(i=0;i<blocks.length;i++){
+		var block=blocks[i];
+		//获取墙块的 坐标 block.left    block.top 
+		//获取墙块的 长度 block.width     高度 block.height
+		
+		//如果发生碰撞请执行 alert("撞到了亲");
+		
+	}	
+}
+
+
+
+function randomRange(Min,Max){
+	var Range = Max - Min;
+	var Rand = Math.random();   
+	var num = Min + Math.round(Rand * Range);
+	return num;	
+}
+</script>
+</html>
