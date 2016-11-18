@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery扑克牌切换焦点图代码 - 站长素材</title>
+
+<link rel="stylesheet" href="css/MxSlider.css">
+<style>
+	/* Styles for Bugs Bunny */
+	body{
+		background-color: #bed1e4;
+	}
+	.mx-bugs_bunny{
+		width: 90%;
+		max-width: 700px;
+		margin: 40px auto;				
+	}
+	.ZI-slider{
+		border: 4px solid #27425d;
+	}
+	.mx-bugs_info{
+		position: absolute;
+		display: block;
+		max-width: 80%;
+		padding: 10px;
+		bottom: 40px;
+		background-color: rgba(39, 66, 93, 0.9);			
+	}
+	.mx-bugs_info a{				
+		font-family: 'Oswald', sans-serif;
+		color: #fff;
+		font-size: 18px;
+		text-decoration: none;
+	}
+	.mx-navigation {
+		margin: 4px;
+		top: 42%;
+	}
+	.mx-prev, .mx-next{
+		background-color: #27425d;
+	}
+	.mx-prev{
+		background-image: url(img/arr_l.png);
+		background-repeat: no-repeat;
+		background-position: 2px 5px;
+	}
+	.mx-next{
+		background-image: url(img/arr_r.png);
+		background-repeat: no-repeat;
+		background-position: 8px 5px;
+	}
+	.mx-nav_dots{
+		top: 88%;				
+	}
+	.mx-nav_dots span{
+		margin: 0px 4px;
+		border-radius: 50%;
+		-moz-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		border: 3px solid #27425d;
+		background-color: #fff;
+	}
+	.mx-nav_dots span.dotActive{
+		background-color: #27425d;
+	}			
+</style>
+
+</head>
+<body>
+<!-- My box for the slider -->
+<div class="mx-bugs_bunny">
+	<!-- Slider -->
+	<div class="ZI-slider">
+		<div>
+			<img src="img/slide1.jpg" alt="" />
+			<div class="mx-bugs_info">
+				<a href="#" target="_blank">
+					This article is about the adult version of Bugs Bunny. For the baby version of the character seen in Baby Looney Tunes, see Baby Bugs.
+				</a>
+			</div>
+		</div>
+		<div>
+			<img src="img/slide2.jpg" alt="" />
+			<div class="mx-bugs_info">
+				<a href="#" target="_blank">
+					Bugs Bunny is an animated cartoon character, created in 1940 by Leon Schlesinger Productions
+				</a>
+			</div>
+		</div>
+		<div>
+			<img src="img/slide3.jpg" alt="" />
+			<div class="mx-bugs_info">
+				<a href="#" target="_blank">
+					Watch This Smart Video on How Bugs Bunny Went From Ordinary Looney Tunes Character to American Icon
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- Slider -->
+</div>
+<!-- My box for the slider -->
+
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="js/MxSlider.js"></script>	
+<script type="text/javascript">
+$(document).ready(function(){		
+	$( '.ZI-slider' ).MxSlider( {
+		autoPlay: true,
+		dots: true,
+		timeSlide: 500
+	} );
+})
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';clear:both;"><br><br>
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

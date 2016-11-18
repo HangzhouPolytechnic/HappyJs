@@ -84,7 +84,7 @@ function Car(brand,model){
 }
 document.onkeydown=function(){
 	var default_step=100;//默认移动的步长
-	var e=event;
+	var e=arguments.callee.caller.arguments[0] || window.event; 
 	//向右边移动
 	if(e.keyCode==39){
 	    if(car1.getX()+car1.width+default_step>document.body.clientWidth){

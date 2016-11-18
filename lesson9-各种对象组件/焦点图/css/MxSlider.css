@@ -1,0 +1,82 @@
+/*
+* ###################################################
+* #                                                 #
+* #    Author: Marko Maksym                         #
+* M    WebSite: http://blognauki.in.ua/my-works/    M
+* #    Project name: MX-SLIDER                      #  
+* #    E-mail: markomaksym@gmail.com                #
+* X    Date of creation: 04.10.2016                 X
+* #    Last Modified:                               #
+* #                                                 #
+* ###################################################
+*/
+.MxSlider{
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.mx-slider_wrap{
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
+	height: auto;
+	margin: 0px auto;
+	overflow: hidden;
+}
+.mx-slide{
+	position: absolute;
+	width: 100%;
+	display: table;
+	float: left;
+	left: 0%;
+}
+.mx-slide img{
+	width: 100%;
+}
+
+/* Navigation */
+.mx-navigation{
+	position: absolute;
+	float: left;
+	width: 100%;
+	top: 47%;
+	z-index: 888;
+}
+.mx-prev, .mx-next{
+	display: table;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	font-size: 0px;
+	cursor: pointer;
+}
+.mx-prev{
+	float: left;
+}
+.mx-next{
+	float: right;
+}
+.mx-nav_dots{
+	position: absolute;
+	width: 100%;
+	top: 85%;
+    text-align: center;
+	z-index: 889;
+}
+.mx-nav_dots span{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin: 3px;
+	font-size: 0px;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border: 2px solid #333;
+	background-color: #fff;
+	cursor: pointer;
+}
+.mx-nav_dots span.dotActive{
+	background-color: #333;
+}
