@@ -1,11 +1,12 @@
-##基本数据类型
+## 基本数据类型
 * Number数据类型(整型，实型)
 * 字符串类型(“hello world” 或者 ‘hello world’)
 * 布尔类型(true,false)
-* 空值 Null
 
 
-##高级数据类型
+
+## 高级数据类型
+
 * 数组
 下面的代码创建名为 cars 的数组：
 ```javascript
@@ -34,18 +35,46 @@ var person={
 name=person.lastname;
 name=person["lastname"];`
 ```
-##变量
+
+## 特殊数据类型
+
+* 转义字符
+
+转义字符 | 描述|转义字符|描述
+---|---|---|---|---|
+\n|回车换行| \r |换行|
+\t|Tab空格|\\|反斜杠
+\\'|单引号| \\"  |双引号|
+
+* 未定义值
+
+1. undefined
+变量没有复制，或者赋予一个不存在的属性值
+
+2. NaN	
+进行计算后得到一个非数字 此时返回NaN
+
+3. 空值 Null
+特殊的值表示为空值
+
+**null与undefined的区别是null表示一个变量被赋予一个空值，而undefined则表示变量尚未赋值**
+
+## 变量
+
 ```javascript
 var orderNumber  
 orderUserid  
 _x=0  
 y=1 
 z=2
+$a
+username
+
 ```
 * 敏感的大小写
 * 特殊的空格和换行符
 
-##JS算数运算符
+## JS算数运算符
 ```javascript
 + (同时为字符运算符)
 -
@@ -55,17 +84,19 @@ z=2
 --
 ```
 
-##JS比较运算符
+## JS比较运算符
 ```javascript
 ==
+===
 ！=
+!==
 <
 >
 <=
 >=
 ```
 
-##JS逻辑运算符
+## JS逻辑运算符
 ```javascript
 ！
 &&
@@ -73,7 +104,7 @@ z=2
 ^(按位异或) 
 ```
 
-##JS程序控制
+## JS程序控制
 
 * if条件语句
 * for循环语句
@@ -92,7 +123,7 @@ function 函数名称(参数1，参数2，参数3)
 }
 ```
 
-##debugger;
+## debugger;
 如何调试js工具的使用
 ```javascript
 {
