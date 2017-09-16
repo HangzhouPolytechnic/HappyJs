@@ -38,13 +38,18 @@ name=person["lastname"];`
 
 ## 特殊数据类型
 
+* 函数 
+
 * 转义字符
 
 转义字符|描述|转义字符|描述
 ---|---|---|---
 \n|回车换行|\r|换行|
-\t|Tab空格|\\\|反斜杠
+\t|Tab空格|\\\ |反斜杠
 \\'|单引号| \\"|双引号|
+
+>完整的转义字符见 javascript自学视频22页 2-2 Javascript转义字符
+
 
 
 * 未定义值
@@ -73,12 +78,13 @@ username
 ```
 * 敏感的大小写
 * 特殊的空格和换行符
+* js常用关键词 见《javascript自学视频》15页 2.1 Javascript关键字
 
 ## JS算数运算符
 ```javascript
 + (同时为字符运算符)
 -
-*(shift+8)
+*
 % 取余数
 ++
 --
@@ -94,7 +100,10 @@ username
 >
 <=
 >=
+typeof
 ```
+>typeof 运算符把类型信息当字符串返回:string number boolean object function undefined 
+
 
 ## JS逻辑运算符
 ```javascript
